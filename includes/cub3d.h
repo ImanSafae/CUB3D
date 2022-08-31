@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 15:46:18 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:47:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <mlx.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
@@ -27,12 +28,18 @@
 # define WIDTH 1024
 # define CENTER 400
 
+
+// COLORS
+# define WHITE 0x00FFFFFF
+# define BLACK 0x00000000
+
+// STRUCTS
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
-	char	*img_add;
+	char	*img_addr;
 	int		bpix;
 	int		line;
 	int		end;
@@ -45,6 +52,7 @@ typedef struct s_data
 	char	**map;
 	char	**texture_color;
 	int		map_size;
+	int		map_len;
 	int		error_no;
 	int		found;
 	int		fd;
@@ -59,6 +67,8 @@ typedef struct s_cub
 	char	**textures;
 	int		rgb[2][3];
 	double	poz[2];
+	int		map_height;
+	int		map_len;
 	int		angle;
 	int		i;
 	int		j;
@@ -141,7 +151,10 @@ long		ft_atoi_custom(const char *str);
 int			key_manager(int key, t_cub *cub);
 
 //2D_ENGINE FUNCTIONS
-void		draw_2d(t_cub *cub);
+// void		draw_2d(t_cub *cub);
+void		draw2d(t_cub *cub);
+void		draw_map(t_cub *cub);
+void		get_map_param(t_cub *cub);
 
 //3D_ENGINE FUNCTIONS
 //UTILS
@@ -156,6 +169,8 @@ void		error(char	*error_msg);
 void		free_data(t_data *d);
 char		**free_tab(char **tab);
 
-
+// MLX
+void	put_pixel_to_image(t_cub *image, int x, int y, int color);
+void	init_window(t_cub **data, int length, int height);
 
 #endif

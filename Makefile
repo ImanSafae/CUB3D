@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
+#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/08/24 14:09:00 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/08/31 20:42:47 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCLUDES			=	-lmlx -I./includes/
 LIB					=	libft/libft.a
 
 SRCS_DIR			=	./srcs/
-SRCS				=	main_cub.c \
+SRCS				=	main_cub.c draw_map.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \
@@ -46,7 +46,7 @@ all:		${NAME}
 			make all -C ./libft
 
 ${NAME}:	${OBJS} ${PARS_OBJS}
-			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
+			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME) -g -fsanitize=address
 
 
 

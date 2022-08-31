@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 15:48:31 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:19:52 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ t_cub	*clean_map(t_data *d)
 	if (newcub == NULL)
 		error("Malloc newcub structure failed");
 	strlen = longest_str(d->map);
-	newcub->cubmap = malloc(sizeof(char *) * (d->map_size));
+	newcub->cubmap = malloc(sizeof(char *) * (d->map_size + 1));
 	//printf("mapsize=%d longestlen=%d\n", d->map_size, strlen);
 	if (newcub->cubmap == NULL)
 		error("Malloc cubmap failed");
@@ -133,6 +133,7 @@ t_cub	*clean_map(t_data *d)
 		d->i++;
 	}
 	newcub->cubmap[d->i] = NULL;
+	newcub->map_height = d->map_size;
 	printf("print the map before memset: (cubmap=%p)\n", d->map);
 	d->i = 0;
 	while (d->map && d->map[d->i])
