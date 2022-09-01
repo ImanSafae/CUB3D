@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 21:47:58 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 15:12:07 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 // COLORS
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
+# define GREY 0x00808080
 
 // STRUCTS
 typedef struct s_mlx

@@ -6,8 +6,40 @@ void	init_window(t_cub **data, int length, int height)
 	(*data)->win = mlx_new_window((*data)->mlx, length, height, "cub3d");
 	(*data)->img = mlx_new_image((*data)->mlx, length, height);
 	(*data)->add = mlx_get_data_addr((*data)->img, &((*data)->bpix), &((*data)->line), &((*data)->end));
-	printf("bpx = %d\n", (*data)->bpix);
-	printf("line = %d\n", (*data)->line);
+}
+
+void	paint_wall_or_space(t_cub *data, int x_pixel, int y_pixel)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = 1;
+	x = 0;
+	y = 0;
+	while (i < data->map_len)
+	{
+		if ((x_pixel + 1 <= (64 * i)) && (x_pixel + 1 >= (64 * (i - 1))))
+		{
+			x = i - 1;
+			break ;
+		}
+		i++;
+	}
+	i = 1;
+	while (i < data->map_height)
+	{
+		if ((y_pixel + 1 <= 64 * i) && (y_pixel + 1 >= 64 * (i - 1)))
+		{
+			y = i - 1;
+			break ;
+		}
+		i++;
+	}
+	if (data->cubmap[y][x] == '1')
+		put_pixel_to_image(data, x_pixel, y_pixel, GREY);
+	else
+		put_pixel_to_image(data, x_pixel, y_pixel, WHITE);
 }
 
 void	put_pixel_to_image(t_cub *data, int x, int y, int color)
@@ -54,15 +86,9 @@ void	draw_map(t_cub *cub)
 		while (i_x < cub->map_len)
 		{
 			if ((i_x + 1) % 64 == 0 || (i_y + 1) % 64 == 0)
-			{
-				// printf("BLACK, x = %d et y = %d\n", i_x, i_y);
 				put_pixel_to_image(cub, i_x, i_y, BLACK);
-			}
 			else
-			{
-				// printf("WHITE, x = %d et y = %d\n", i_x, i_y);
-				put_pixel_to_image(cub, i_x, i_y, WHITE);
-			}
+				paint_wall_or_space(cub, i_x, i_y);
 			i_x++;
 		}
 		i_x = 0;
@@ -73,12 +99,11 @@ void	draw_map(t_cub *cub)
 void	draw2d(t_cub *cub)
 {
 	get_map_param(cub);
-	// printf("len = %d et height = %d\n", cub->map_len, cub->map_height);
-	// init_window(&cub, cub->map_len, cub->map_height);
-	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, cub->map_len, cub->map_height, "cub3d");
-	cub->img = mlx_new_image(cub->mlx, cub->map_len, cub->map_height);
-	cub->add = mlx_get_data_addr(cub->img, &(cub->bpix), &(cub->line), &(cub->end));
+	init_window(&cub, cub->map_len, cub->map_height);
+	// cub->mlx = mlx_init();
+	// cub->win = mlx_new_window(cub->mlx, cub->map_len, cub->map_height, "cub3d");
+	// cub->img = mlx_new_image(cub->mlx, cub->map_len, cub->map_height);
+	// cub->add = mlx_get_data_addr(cub->img, &(cub->bpix), &(cub->line), &(cub->end));
 	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);

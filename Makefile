@@ -6,14 +6,14 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/08/31 20:42:47 by itaouil          ###   ########.fr        #
+#    Updated: 2022/09/01 14:42:00 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
-FLAGS				=	-Werror -Wextra -Wall -g
+FLAGS				=	-Werror -Wextra -Wall -g -fsanitize=address
 INCLUDES			=	-lmlx -I./includes/
 LIB					=	libft/libft.a
 
@@ -46,7 +46,7 @@ all:		${NAME}
 			make all -C ./libft
 
 ${NAME}:	${OBJS} ${PARS_OBJS}
-			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME) -g -fsanitize=address
+			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
 
 
 
