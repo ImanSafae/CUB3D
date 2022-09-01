@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 20:57:54 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 12:51:06 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 void	init_mlxptr(t_cub *c)
 {
-	c->mlx = NULL;
-	c->win = NULL;
-	c->img = NULL;
-	c->add = NULL;
+	c->mlx->mlx_ptr = NULL;
+	c->mlx->win_ptr = NULL;
+	c->mlx->img_addr = NULL;
+	c->mlx->img_ptr = NULL;
+	c->mlx->bpix = 0;
+	c->mlx->end = 0;
+	c->mlx->bpix = 0;
 }
 
 int	main(int argc, char **argv)

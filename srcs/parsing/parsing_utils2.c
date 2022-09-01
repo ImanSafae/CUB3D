@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils_2.c                                  :+:      :+:    :+:   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 15:34:29 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:06:43 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,15 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->j = 0;
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
-	//printf("x=%ld, y=%ld\n", cub->poz[X], cub->poz[Y]);
+	cub->map_len = 0;
+	cub->map_height = d->map_size;
+	cub->mlx = malloc(sizeof(t_mlx));
+	if (cub->mlx == NULL)
+		error("malloc cub->mlx failed");
+	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mlx);
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);
+	// parse_textures(cub);
 	persona_position(cub);
 }

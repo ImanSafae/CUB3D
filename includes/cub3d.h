@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 15:12:07 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 15:58:21 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ typedef struct s_mlx
 	int		end;
 }				t_mlx;
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*img_addr;
+	int		width;
+	int		height;
+	int		bpix;
+	int		line;
+	int		endian;
+}				t_img;
+
 typedef struct s_data
 {
 	char	*filename;
@@ -66,6 +77,7 @@ typedef struct s_cub
 {
 	char	**cubmap;
 	char	**textures;
+	t_img	texture_img[4];
 	int		rgb[2][3];
 	double	poz[2];
 	int		map_height;
@@ -73,13 +85,7 @@ typedef struct s_cub
 	int		angle;
 	int		i;
 	int		j;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*add;
-	int		bpix;
-	int		line;
-	int		end;
+	t_mlx	*mlx;
 }	t_cub;
 
 //typedef int	(*t_funcptr)(t_utils *, int, t_origin *, int);
@@ -133,6 +139,7 @@ int			get_texture(t_data *data, char *line, char *identifier, int index);
 int			find_mapstart(char **file);
 void		copy_textures_tab(t_data *data, t_cub *cub);
 void		clean_texture(t_cub *cub);
+int			check_xpm(char *str);
 //GET_MAP
 int			good_line(int end, int index, int start, char *line);
 int			find_maplen(t_data *d);
@@ -171,7 +178,7 @@ void		free_data(t_data *d);
 char		**free_tab(char **tab);
 
 // MLX
-void	put_pixel_to_image(t_cub *image, int x, int y, int color);
-void	init_window(t_cub **data, int length, int height);
+void		put_pixel_to_image(t_cub *image, int x, int y, int color);
+void		init_window(t_cub **data, int length, int height);
 
 #endif

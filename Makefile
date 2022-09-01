@@ -6,7 +6,7 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/01 14:42:00 by itaouil          ###   ########.fr        #
+#    Updated: 2022/09/01 16:07:15 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,14 @@ SRCS_PARS				=	get_next_line.c \
 							get_next_line_utils.c \
 							parsing.c \
 							parsing_utils.c \
-							parsing_utils_2.c \
+							parsing_utils2.c \
 							map_utils.c \
-							textures_utils.c \
 							color_utils.c \
 							clean_map_utils.c \
 							utils.c \
-							utils_2.c \
+							utils2.c \
+							textures_utils.c \
+							# textures_utils2.c \
 							
 
 								
