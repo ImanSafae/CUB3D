@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 15:58:21 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 19:30:12 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <limits.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # define PI 3.141592653589793
 # define HEIGHT 800
@@ -33,6 +34,7 @@
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
 # define GREY 0x00808080
+# define YELLOW 0x00FFFF00
 
 // STRUCTS
 typedef struct s_mlx
