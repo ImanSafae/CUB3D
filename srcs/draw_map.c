@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 13:09:30 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:05:01 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,40 @@ void	init_window(t_cub **data, int length, int height)
 	m->img_addr = mlx_get_data_addr(m->img_ptr, &(m->bpix), &(m->line), &(m->end));
 	printf("bpx = %d\n", m->bpix);
 	printf("line = %d\n", m->line);
+}
+
+void	paint_wall_or_space(t_cub *data, int x_pixel, int y_pixel)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = 1;
+	x = 0;
+	y = 0;
+	while (i < data->map_len)
+	{
+		if ((x_pixel + 1 <= (64 * i)) && (x_pixel + 1 >= (64 * (i - 1))))
+		{
+			x = i - 1;
+			break ;
+		}
+		i++;
+	}
+	i = 1;
+	while (i < data->map_height)
+	{
+		if ((y_pixel + 1 <= 64 * i) && (y_pixel + 1 >= 64 * (i - 1)))
+		{
+			y = i - 1;
+			break ;
+		}
+		i++;
+	}
+	if (data->cubmap[y][x] == '1')
+		put_pixel_to_image(data, x_pixel, y_pixel, GREY);
+	else
+		put_pixel_to_image(data, x_pixel, y_pixel, WHITE);
 }
 
 void	put_pixel_to_image(t_cub *data, int x, int y, int color)
@@ -53,6 +87,7 @@ void	get_map_param(t_cub *cub)
 {
 	int	map_len;
 
+	map_len = 0;
 	if (cub && cub->cubmap[0])
 		map_len = ft_strlen(cub->cubmap[0]) * 64;
 	cub->map_len = map_len;
@@ -71,15 +106,9 @@ void	draw_map(t_cub *cub)
 		while (i_x < cub->map_len)
 		{
 			if ((i_x + 1) % 64 == 0 || (i_y + 1) % 64 == 0)
-			{
-				// printf("BLACK, x = %d et y = %d\n", i_x, i_y);
 				put_pixel_to_image(cub, i_x, i_y, BLACK);
-			}
 			else
-			{
-				// printf("WHITE, x = %d et y = %d\n", i_x, i_y);
-				put_pixel_to_image(cub, i_x, i_y, WHITE);
-			}
+				paint_wall_or_space(cub, i_x, i_y);
 			i_x++;
 		}
 		i_x = 0;

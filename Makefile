@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
+#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/01 14:17:39 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/09/01 16:07:15 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ SRCS_PARS				=	get_next_line.c \
 							parsing_utils.c \
 							parsing_utils2.c \
 							map_utils.c \
-							textures_utils.c \
-							textures_utils2.c \
 							color_utils.c \
 							clean_map_utils.c \
 							utils.c \
 							utils2.c \
+							textures_utils.c \
+							# textures_utils2.c \
 							
 
 								

@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 17:26:40 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:31:43 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void	init_cub(t_data *d, t_cub *cub)
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);
-	parse_textures(cub);
+	// parse_textures(cub);
 	persona_position(cub);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   txtur_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:40:25 by abelhadi          #+#    #+#             */
 /*   Updated: 2022/09/01 16:53:28 by abelhadi         ###   ########.fr       */
@@ -83,8 +83,8 @@ void	clean_texture(t_cub *c)
 	c->i = 0;
 	while (c->txtur && c->txtur[c->i] && c->i < 4)
 	{
-		temp = ft_strtrim(c->txtur[c->i], "\n");
-		check_xpm(temp);
+		temp = ft_strtrim(cub->textures[cub->i], "\n");
+		// check_xpm(temp);
 		ret = open(temp, O_RDONLY, 0);
 		temp = cub_free(temp);
 		if (ret < 0)
