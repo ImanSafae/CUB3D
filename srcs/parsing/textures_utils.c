@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures_utils.c                                   :+:      :+:    :+:   */
+/*   txtur_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:40:25 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 16:08:12 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 16:53:28 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,29 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 	return (0);
 }
 
-void	copy_textures_tab(t_data *d, t_cub *cub)
+void	copy_textures_tab(t_data *d, t_cub *c)
 {
 	d->i = 0;
-	cub->textures = NULL;
-	cub->textures = malloc(sizeof(char *) * 5);
-	if (cub->textures == NULL)
-		error("cub->textures malloc failed");
+	c->txtur = NULL;
+	c->txtur = malloc(sizeof(char *) * 5);
+	if (c->txtur == NULL)
+		error("c->txtur malloc failed");
 	while (d->texture_color && d->texture_color[d->i] && d->i < 4)
 	{
-		cub->textures[d->i] = ft_strdup(d->texture_color[d->i]);
+		c->txtur[d->i] = ft_strdup(d->texture_color[d->i]);
 		d->i++;
 	}
-	cub->textures[d->i] = NULL;
+	c->txtur[d->i] = NULL;
 }
 
-void	clean_texture(t_cub *cub)
+void	clean_texture(t_cub *c)
 {
 	int		ret;
 	char	*temp;
 
 	temp = NULL;
-	cub->i = 0;
-	while (cub->textures && cub->textures[cub->i] && cub->i < 4)
+	c->i = 0;
+	while (c->txtur && c->txtur[c->i] && c->i < 4)
 	{
 		temp = ft_strtrim(cub->textures[cub->i], "\n");
 		// check_xpm(temp);
@@ -92,11 +92,20 @@ void	clean_texture(t_cub *cub)
 			error("a texture file is not opening");
 		}
 		close(ret);
-		cub->i++;
+		c->i++;
 	}
 }
 
-// void	parse_textures(t_cub *cub)
-// {
-	
-// }
+void	parse_txtur(t_cub *c)
+{
+	void	*mlx;
+	int		i;
+
+	mlx = c->mlx->mlx_ptr;
+	i = -1;
+	while (c->txtur && c->txtur[++i])
+	{
+		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], c->t[i].width, c->t[i].height);
+		printf("texture image created = %p\n", c->t[i].img);
+	}
+}

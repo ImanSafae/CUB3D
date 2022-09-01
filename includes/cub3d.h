@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 19:30:12 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 19:45:05 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_mlx
 
 typedef struct s_img
 {
-	void	*img_ptr;
-	char	*img_addr;
+	void	*img;
+	char	*addr;
 	int		width;
 	int		height;
 	int		bpix;
@@ -78,8 +78,8 @@ typedef struct s_data
 typedef struct s_cub
 {
 	char	**cubmap;
-	char	**textures;
-	t_img	texture_img[4];
+	char	**txtur;
+	t_img	t[4];   // PARSED TEXTURE FILES 
 	int		rgb[2][3];
 	double	poz[2];
 	int		map_height;
@@ -142,6 +142,7 @@ int			find_mapstart(char **file);
 void		copy_textures_tab(t_data *data, t_cub *cub);
 void		clean_texture(t_cub *cub);
 int			check_xpm(char *str);
+void		parse_txtur(t_cub *c);
 //GET_MAP
 int			good_line(int end, int index, int start, char *line);
 int			find_maplen(t_data *d);
