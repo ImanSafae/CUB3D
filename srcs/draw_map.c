@@ -1,22 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
+/*   Updated: 2022/09/01 13:09:30 by abelhadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 void	init_window(t_cub **data, int length, int height)
 {
-	(*data)->mlx = mlx_init();
-	(*data)->win = mlx_new_window((*data)->mlx, length, height, "cub3d");
-	(*data)->img = mlx_new_image((*data)->mlx, length, height);
-	(*data)->add = mlx_get_data_addr((*data)->img, &((*data)->bpix), &((*data)->line), &((*data)->end));
-	printf("bpx = %d\n", (*data)->bpix);
-	printf("line = %d\n", (*data)->line);
+	t_mlx	*m;
+
+	m = (*data)->mlx;
+	m->mlx_ptr = mlx_init();
+	m->win_ptr = mlx_new_window(m->mlx_ptr, length, height, "cub3d");
+	m->img_ptr = mlx_new_image(m->mlx_ptr, length, height);
+	m->img_addr = mlx_get_data_addr(m->img_ptr, &(m->bpix), &(m->line), &(m->end));
+	printf("bpx = %d\n", m->bpix);
+	printf("line = %d\n", m->line);
 }
 
 void	put_pixel_to_image(t_cub *data, int x, int y, int color)
 {
 	char	*pixel;
 	int		position;
+	t_mlx	*m;
 
-	position = (x * (data->bpix / 8)) + (y * data->line);
-	pixel = data->add + (y * data->line + x * (data->bpix / 8));
+	m = data->mlx;
+	position = (x * (m->bpix / 8)) + (y * m->line);
+	pixel = m->img_addr + (y * m->line + x * (m->bpix / 8));
 	*(unsigned int *)pixel = color;
 }
 
@@ -32,12 +49,12 @@ static size_t	ft_strlen(const char *s)
 	return (length);
 }
 
-
 void	get_map_param(t_cub *cub)
 {
 	int	map_len;
 
-	map_len = ft_strlen(cub->cubmap[0]) * 64;
+	if (cub && cub->cubmap[0])
+		map_len = ft_strlen(cub->cubmap[0]) * 64;
 	cub->map_len = map_len;
 	cub->map_height = cub->map_height * 64;
 }
@@ -72,14 +89,17 @@ void	draw_map(t_cub *cub)
 
 void	draw2d(t_cub *cub)
 {
+	t_mlx	*m;
+
+	m = cub->mlx;
 	get_map_param(cub);
 	// printf("len = %d et height = %d\n", cub->map_len, cub->map_height);
 	// init_window(&cub, cub->map_len, cub->map_height);
-	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, cub->map_len, cub->map_height, "cub3d");
-	cub->img = mlx_new_image(cub->mlx, cub->map_len, cub->map_height);
-	cub->add = mlx_get_data_addr(cub->img, &(cub->bpix), &(cub->line), &(cub->end));
+	m->mlx_ptr = mlx_init();
+	m->win_ptr = mlx_new_window(m->mlx_ptr, cub->map_len, cub->map_height, "cub3d");
+	m->img_ptr = mlx_new_image(m->mlx_ptr, cub->map_len, cub->map_height);
+	m->img_addr = mlx_get_data_addr(m->img_ptr, &(m->bpix), &(m->line), &(m->end));
 	draw_map(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
-	mlx_loop(cub->mlx);
+	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->img_ptr, 0, 0);
+	mlx_loop(m->mlx_ptr);
 }

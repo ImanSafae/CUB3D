@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:40:25 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 15:48:24 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 15:40:52 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,19 @@ void	clean_texture(t_cub *cub)
 	while (cub->textures && cub->textures[cub->i] && cub->i < 4)
 	{
 		temp = ft_strtrim(cub->textures[cub->i], "\n");
+		check_xpm(temp);
 		ret = open(temp, O_RDONLY, 0);
 		temp = cub_free(temp);
 		if (ret < 0)
 		{		
-			error("a texture file is invalid");
+			error("a texture file is not opening");
 		}
 		close(ret);
 		cub->i++;
 	}
+}
+
+void	parse_textures(t_cub *cub)
+{
+	
 }
