@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils_2.c                                  :+:      :+:    :+:   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 13:58:29 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:26:40 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->mlx = malloc(sizeof(t_mlx));
 	if (cub->mlx == NULL)
 		error("malloc cub->mlx failed");
+	//cub->texture_img = malloc(sizeof(t_img) * 5);
+	//if (cub->texture_img == NULL)
+	//	error("malloc cub->texture_img failed");
 	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mlx);
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
