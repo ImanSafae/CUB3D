@@ -83,7 +83,7 @@ void	clean_texture(t_cub *c)
 	c->i = 0;
 	while (c->txtur && c->txtur[c->i] && c->i < 4)
 	{
-		temp = ft_strtrim(cub->textures[cub->i], "\n");
+		temp = ft_strtrim(c->txtur[c->i], "\n");
 		// check_xpm(temp);
 		ret = open(temp, O_RDONLY, 0);
 		temp = cub_free(temp);
@@ -105,7 +105,7 @@ void	parse_txtur(t_cub *c)
 	i = -1;
 	while (c->txtur && c->txtur[++i])
 	{
-		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], c->t[i].width, c->t[i].height);
+		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], &c->t[i].width, &c->t[i].height);
 		printf("texture image created = %p\n", c->t[i].img);
 	}
 }

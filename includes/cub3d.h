@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 19:45:05 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/01 20:01:53 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,6 @@ int			key_manager(int key, t_cub *cub);
 
 //2D_ENGINE FUNCTIONS
 // void		draw_2d(t_cub *cub);
-void		draw2d(t_cub *cub);
-void		draw_map(t_cub *cub);
-void		get_map_param(t_cub *cub);
 
 //3D_ENGINE FUNCTIONS
 //UTILS
@@ -182,6 +179,16 @@ char		**free_tab(char **tab);
 
 // MLX
 void		put_pixel_to_image(t_cub *image, int x, int y, int color);
+void		init_window(t_cub **data, int length, int height);
+
+// 2D MAP (to be deleted later)
+void		draw2d(t_cub *cub);
+void		draw_map(t_cub *cub);
+void		get_map_param(t_cub *cub);
+int			get_y_coordinate(t_cub *data, int y_pixel);
+int			get_x_coordinate(t_cub *data, int x_pixel, int y);
+void		put_pixel_to_image(t_cub *data, int x, int y, int color);
+void		get_map_param(t_cub *cub);
 void		init_window(t_cub **data, int length, int height);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 13:47:53 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/31 15:46:59 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 20:11:40 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ int	bad_charac(char *c)
 	i = 0;
 	while (c[i])
 	{
-		printf("bad carac=(%c)\n", c[i]);
 		if (c[i] != '0' && c[i] != '1' && c[i] != 'N' && c[i] != 'E'
 			&& c[i] != 'S' && c[i] != 'W' && c[i] != '\n'
 			&& c[i] != '\t' && c[i] != ' ' && c[i] != 'C')
+		{
+			printf("bad carac=(%c)\n", c[i]);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
