@@ -6,7 +6,7 @@
 #    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/02 12:06:36 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/09/02 14:11:26 by abelhadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ DRAW_OBJS			=	$(addprefix ${SRCS_DRAW_DIR},${SRCS_DRAW:.c=.o})
 all:		${NAME}
 			make all -C ./libft
 
-${NAME}:	${OBJS} ${PARS_OBJS}
+${NAME}:	${OBJS} ${PARS_OBJS} ${DRAW_OBJS}
 			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
 
 
