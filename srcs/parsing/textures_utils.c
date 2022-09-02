@@ -105,7 +105,7 @@ void	parse_txtur(t_cub *c)
 	i = -1;
 	while (c->txtur && c->txtur[++i])
 	{
-		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], c->t[i].width, c->t[i].height);
+		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], &c->t[i].width, &c->t[i].height);
 		printf("texture image created = %p\n", c->t[i].img);
 	}
 }

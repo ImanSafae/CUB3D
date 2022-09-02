@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 09:59:27 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/24 12:55:00 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:27:36 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,14 @@ int	is_persona(char c, int mode)
 {
 	static int		carac_counter = 0;
 
-	if (mode == OPEN && (c == 'S' || c == 'E' || c == 'W' || c == 'N'))
+	if (mode == OPEN)
 	{
-		carac_counter++;
-		//printf("found persona (%c) counter=%d\n", c, carac_counter);
-		return (1);
+		if (c == 'S' || c == 'E' || c == 'W' || c == 'N')
+		{
+			// printf("found persona (%c) counter=%d\n", c, carac_counter);
+			carac_counter++;
+			return (1);
+		}
 	}
 	if (mode == CHECK && (carac_counter > 1 || carac_counter == 0))
 	{
