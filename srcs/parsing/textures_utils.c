@@ -83,7 +83,7 @@ void	clean_texture(t_cub *c)
 	c->i = 0;
 	while (c->txtur && c->txtur[c->i] && c->i < 4)
 	{
-		temp = ft_strtrim(cub->textures[cub->i], "\n");
+		temp = ft_strtrim(c->txtur[c->i], "\n");
 		// check_xpm(temp);
 		ret = open(temp, O_RDONLY, 0);
 		temp = cub_free(temp);
