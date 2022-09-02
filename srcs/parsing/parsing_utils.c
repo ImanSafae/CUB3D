@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 20:11:55 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/02 11:23:27 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,27 +109,26 @@ void	get_map(t_data *d)
 
 t_cub	*clean_map(t_data *d)
 {
-	int		strlen;
 	t_cub	*newcub;
 
 	//printf("======================			clean_map ()\n");
-	strlen = 0;
+	newcub = NULL;
 	newcub = (t_cub *)malloc(sizeof(t_cub));
 	if (newcub == NULL)
 		error("Malloc newcub structure failed");
-	strlen = longest_str(d->map);
+	newcub->map_len = longest_str(d->map);
 	newcub->cubmap = malloc(sizeof(char *) * (d->map_size + 1));
-	//printf("mapsize=%d longestlen=%d\n", d->map_size, strlen);
+	//printf("mapsize=%d longestlen=%d\n", d->map_size, newcub->map_len);
 	if (newcub->cubmap == NULL)
 		error("Malloc cubmap failed");
 	d->i = 0;
 	while (d->i < (d->map_size))
 	{
 		//printf("print the map mallocing\n");
-		newcub->cubmap[d->i] = malloc(sizeof(char) * (strlen + 1));
-		newcub->cubmap[d->i][strlen] = '\0';
-		ft_memset(newcub->cubmap[d->i], '$', (strlen));
-		cub_strlcpy(newcub->cubmap[d->i], d->map[d->i], strlen + 1);
+		newcub->cubmap[d->i] = malloc(sizeof(char) * (newcub->map_len + 1));
+		newcub->cubmap[d->i][newcub->map_len] = '\0';
+		ft_memset(newcub->cubmap[d->i], '$', (newcub->map_len));
+		cub_strlcpy(newcub->cubmap[d->i], d->map[d->i], newcub->map_len + 1);
 		d->i++;
 	}
 	newcub->cubmap[d->i] = NULL;
@@ -159,7 +158,7 @@ void	last_validation(t_data *data, t_cub *cub)
 
 	//printf("======================			last_validation ()\n");
 	if (data->map_size < 3)
-		error("map inferior to three rows");	
+		error("map inferior to three rows or inexistent");	
 	i = 1;
 	while (cub->cubmap && cub->cubmap[i] && cub->cubmap[i + 1] != NULL)
 	{

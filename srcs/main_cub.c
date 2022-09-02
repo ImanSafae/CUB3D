@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 12:51:06 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:39:50 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	c = NULL;
 	if (argc == 2)
 	{
+		
 		c = parsing(argv[1]);
 /*
 		init_mlxptr(c);
