@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/01 20:02:01 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/02 13:28:42 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_x_coordinate(t_cub *data, int x_pixel, int y)
 
 	i = 1;
 	x = 0;
-	while (i < ft_strlen(data->cubmap[y]))
+	while (i <= ft_strlen(data->cubmap[y]))
 	{
 		if ((x_pixel + 1 <= 64 * i) && (x_pixel + 1 >= 64 * (i - 1)))
 		{

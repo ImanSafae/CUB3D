@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 20:01:53 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/02 13:12:17 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@
 # define BLACK 0x00000000
 # define GREY 0x00808080
 # define YELLOW 0x00FFFF00
+
+// DIRECTIONS
+# define RIGHT 0
+# define LEFT 1
+# define UP 2
+# define DOWN 3
 
 // STRUCTS
 typedef struct s_mlx
@@ -84,7 +90,7 @@ typedef struct s_cub
 	double	poz[2];
 	int		map_height;
 	int		map_len;
-	int		angle;
+	float	angle;
 	int		i;
 	int		j;
 	t_mlx	*mlx;
@@ -190,5 +196,8 @@ int			get_x_coordinate(t_cub *data, int x_pixel, int y);
 void		put_pixel_to_image(t_cub *data, int x, int y, int color);
 void		get_map_param(t_cub *cub);
 void		init_window(t_cub **data, int length, int height);
+int			find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
+int			find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+int			find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
 
 #endif

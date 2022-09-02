@@ -6,7 +6,7 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/01 20:13:25 by itaouil          ###   ########.fr        #
+#    Updated: 2022/09/02 13:07:50 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS				=	main_cub.c \
 SRCS_DRAW_DIR			=	./srcs/draw/
 SRCS_DRAW 				=	draw_map.c \
 							draw_utils.c \
+							draw_rays.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \
