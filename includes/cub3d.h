@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/02 13:12:17 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/06 12:15:19 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define BLACK 0x00000000
 # define GREY 0x00808080
 # define YELLOW 0x00FFFF00
+# define RED 0x00FF0000
 
 // DIRECTIONS
 # define RIGHT 0

@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:18:00 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 16:59:33 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:14:07 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int	check_xpm(char *str)
 	char	**splited;
 	int		i;
 
+	i = 0;
 	splited = NULL;
 	if (str)
-		splited = ft_split(str, ".");
+		splited = ft_split(str, '.');
 	while (splited && splited[i])
 	{
 		i++;

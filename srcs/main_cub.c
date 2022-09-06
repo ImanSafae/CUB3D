@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/02 13:21:44 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/02 16:52:44 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	c = NULL;
 	if (argc == 2)
 	{
+		
 		c = parsing(argv[1]);
 /*
 		init_mlxptr(c);

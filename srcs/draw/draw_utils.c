@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/02 13:28:42 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/02 16:52:41 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,9 @@ void	put_pixel_to_image(t_cub *data, int x, int y, int color)
 
 void	get_map_param(t_cub *cub)
 {
-	int	map_len;
-
-	map_len = 0;
-	if (cub && cub->cubmap[0])
-		map_len = ft_strlen(cub->cubmap[0]) * 64;
-	cub->map_len = map_len;
-	cub->map_height = cub->map_height * 64;
+	// ils sont initialisés dans cub_init() et clean_map() dans la partie parsing().
+	cub->map_len *= 64;
+	cub->map_height *= 64;
 }
 
 void	init_window(t_cub **data, int length, int height)
