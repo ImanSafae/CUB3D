@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/06 12:15:19 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/07 18:39:23 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ typedef struct s_cub
 	t_mlx	*mlx;
 }	t_cub;
 
+typedef struct s_point
+{
+	float	x;
+	float	y;
+}				t_point;
+
 //typedef int	(*t_funcptr)(t_utils *, int, t_origin *, int);
 //typedef struct s_btin
 //{
@@ -185,20 +191,24 @@ void		free_data(t_data *d);
 char		**free_tab(char **tab);
 
 // MLX
-void		put_pixel_to_image(t_cub *image, int x, int y, int color);
+void		put_pixel_to_image(t_cub *data, float x, float y, int color);
 void		init_window(t_cub **data, int length, int height);
 
 // 2D MAP (to be deleted later)
 void		draw2d(t_cub *cub);
 void		draw_map(t_cub *cub);
 void		get_map_param(t_cub *cub);
-int			get_y_coordinate(t_cub *data, int y_pixel);
-int			get_x_coordinate(t_cub *data, int x_pixel, int y);
-void		put_pixel_to_image(t_cub *data, int x, int y, int color);
+int			get_y_coordinate(t_cub *data, float y_pixel);
+int			get_x_coordinate(t_cub *data, float x_pixel, int y);
 void		get_map_param(t_cub *cub);
 void		init_window(t_cub **data, int length, int height);
 int			find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
 int			find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
 int			find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+t_point		*paint_hor_intersections(t_cub *data);
+t_point		*paint_ver_intersections(t_cub *data);
+void		dda(t_cub *data, t_point *a, t_point *b);
+int			abs_val(int number);
+void		paint_fov(t_cub *data);
 
 #endif

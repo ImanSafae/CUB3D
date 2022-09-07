@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/02 16:52:41 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/07 16:15:56 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_strlen(const char *s)
 	return (length);
 }
 
-int	get_y_coordinate(t_cub *data, int y_pixel)
+int	get_y_coordinate(t_cub *data, float y_pixel)
 {
 	int	i;
 	int	y;
@@ -43,7 +43,7 @@ int	get_y_coordinate(t_cub *data, int y_pixel)
 	return (y);
 }
 
-int	get_x_coordinate(t_cub *data, int x_pixel, int y)
+int	get_x_coordinate(t_cub *data, float x_pixel, int y)
 {
 	int	i;
 	int	x;
@@ -62,15 +62,15 @@ int	get_x_coordinate(t_cub *data, int x_pixel, int y)
 	return (x);
 }
 
-void	put_pixel_to_image(t_cub *data, int x, int y, int color)
+void	put_pixel_to_image(t_cub *data, float x, float y, int color)
 {
 	char	*pixel;
 	int		position;
 	t_mlx	*m;
 
 	m = data->mlx;
-	position = (x * (m->bpix / 8)) + (y * m->line);
-	pixel = m->img_addr + (y * m->line + x * (m->bpix / 8));
+	position = ((int)x * (m->bpix / 8)) + ((int)y * m->line);
+	pixel = m->img_addr + ((int)y * m->line + (int)x * (m->bpix / 8));
 	*(unsigned int *)pixel = color;
 }
 
