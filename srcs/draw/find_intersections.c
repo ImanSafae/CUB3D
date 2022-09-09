@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/07 18:41:39 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/09 14:25:34 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,12 @@ t_point	*paint_ver_intersections(t_cub *data)
 	intersection = first_ver_intersection(data, direction);
 	if (direction == RIGHT)
 	{
-		printf("direction = RIGHT\n");
+		// printf("direction = RIGHT\n");
 		while (intersection->y >= 63 && intersection->y <= data->map_height
 			&& intersection->x <= data->map_len
 			&& !(is_wall(data, intersection, direction)))
 		{
-			printf("intersection's x = %f et intersection's y = %f\n", intersection->x, intersection->y);
+			// printf("intersection's x = %f et intersection's y = %f\n", intersection->x, intersection->y);
 			next_ver_intersection(data, direction, &intersection);
 		}
 	}
@@ -202,17 +202,17 @@ void	paint_fov(t_cub *data)
 
 	// ver_intersection = paint_ver_intersections(data);
 	// hor_intersection = paint_hor_intersections(data);
-	fov_ray = data->angle - 30;
-	incr = 60 / 320;
+	fov_ray = data->angle - 0.52;
+	incr = 1.05 / 320;
 	tmp = data->angle;
 	paint_ray(data);
-	while(fov_ray < tmp + 30)
+	while(fov_ray < tmp + 0.52)
 	{
 		data->angle = fov_ray;
 		paint_ray(data);
 		fov_ray = fov_ray + incr;
 	}
-	data->angle = tmp + 30;
+	data->angle = tmp + 0.52;
 	paint_ray(data);
 	data->angle = tmp;
 }
