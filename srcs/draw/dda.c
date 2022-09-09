@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/07 17:05:03 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/09 21:28:18 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	dda(t_cub *data, t_point *a, t_point *b)
 	float	yinc;
 	int		i;
 
-	// printf("intersection's x = %f et intersection's y = %f\n", (float)b->x, (float)b->y);
 	if (b->x < 0)
 		b->x = 0;
 	if (b->y < 0)
@@ -38,15 +37,16 @@ void	dda(t_cub *data, t_point *a, t_point *b)
 	dy = (float)(b->y) - (float)(a->y);
 	i = 1;
 	if (abs_val(dx) > abs_val(dy))
-		steps = abs_val(dx);
+		steps = abs_val((int)dx);
 	else
-		steps = abs_val(dy);
+		steps = abs_val((int)dy);
 	xinc = dx / steps;
 	yinc = dy / steps;
-	// printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
-	while (i <= steps)
+	printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
+	while (i < steps)
 	{
-		put_pixel_to_image(data, a->x, a->y, BLACK);
+		printf("x = %f et y = %f\n", a->x, a->y);
+		put_pixel_to_image(data, a->x, a->y, GREEN);
 		a->x = a->x + xinc;
 		a->y = a->y + yinc;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/07 18:39:23 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/09 21:28:32 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,23 @@
 # define GREY 0x00808080
 # define YELLOW 0x00FFFF00
 # define RED 0x00FF0000
+# define GREEN 0x00008000
 
 // DIRECTIONS
-# define RIGHT 0
-# define LEFT 1
-# define UP 2
-# define DOWN 3
+# define NONE 0
+# define RIGHT 1
+# define LEFT 2
+# define UP 3
+# define DOWN 4
+
+// KEY AND MOUSE CODES
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define ESC 53
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 
 // STRUCTS
 typedef struct s_mlx
@@ -92,6 +103,7 @@ typedef struct s_cub
 	int		map_height;
 	int		map_len;
 	float	angle;
+	float	ray;
 	int		i;
 	int		j;
 	t_mlx	*mlx;
@@ -195,20 +207,23 @@ void		put_pixel_to_image(t_cub *data, float x, float y, int color);
 void		init_window(t_cub **data, int length, int height);
 
 // 2D MAP (to be deleted later)
-void		draw2d(t_cub *cub);
-void		draw_map(t_cub *cub);
-void		get_map_param(t_cub *cub);
-int			get_y_coordinate(t_cub *data, float y_pixel);
-int			get_x_coordinate(t_cub *data, float x_pixel, int y);
-void		get_map_param(t_cub *cub);
-void		init_window(t_cub **data, int length, int height);
-int			find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
-int			find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
-int			find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
-t_point		*paint_hor_intersections(t_cub *data);
-t_point		*paint_ver_intersections(t_cub *data);
-void		dda(t_cub *data, t_point *a, t_point *b);
-int			abs_val(int number);
-void		paint_fov(t_cub *data);
+void			draw2d(t_cub *cub);
+void			draw_map(t_cub *cub);
+void			get_map_param(t_cub *cub);
+int				get_y_coordinate(t_cub *data, float y_pixel);
+int				get_x_coordinate(t_cub *data, float x_pixel, int y);
+void			get_map_param(t_cub *cub);
+void			init_window(t_cub **data, int length, int height);
+int				find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
+int				find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+int				find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+t_point			*paint_hor_intersections(t_cub *data, int direction);
+t_point			*paint_ver_intersections(t_cub *data, int direction);
+void			dda(t_cub *data, t_point *a, t_point *b);
+int	abs_val(int number);
+void			paint_fov(t_cub *data);
+
+// HOOKS
+int		rotation_and_moves(int keycode, t_cub *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/07 18:39:41 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/09 18:39:55 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,9 @@ void	draw2d(t_cub *cub)
 	init_window(&cub, cub->map_len, cub->map_height);
 	draw_map(cub);
 	show_character(cub);
-	// paint_hor_intersections(cub);
-	// paint_ver_intersections(cub);
 	paint_fov(cub);
 	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->img_ptr, 0, 0);
+	// mlx_key_hook(m->win_ptr, rotation_and_moves, cub);
 	// printf("closest wall = %d\n", find_closest_hor_wall(cub, (int)(cub->poz[0]), (int)(cub->poz[0]), RIGHT));
 	mlx_loop(m->mlx_ptr);
 }
