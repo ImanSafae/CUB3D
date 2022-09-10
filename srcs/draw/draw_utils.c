@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/07 16:15:56 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/10 15:59:32 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_y_coordinate(t_cub *data, float y_pixel)
 
 	i = 1;
 	y = 0;
-	while (i < data->map_height)
+	while (i < data->map_height / 64)
 	{
 		if ((y_pixel + 1 <= 64 * i) && (y_pixel + 1 >= 64 * (i - 1)))
 		{

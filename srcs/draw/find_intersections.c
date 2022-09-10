@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/09 21:22:10 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/10 18:07:27 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,20 @@ int	is_wall(t_cub *data, t_point *point, int direction)
 	}
 	else if (direction == DOWN)
 	{
-		if (data->cubmap[y][x + 1] == '1')
+		if (data->cubmap[y + 1][x] == '1')
 		{
 			// printf("x = %d et y = %d\n", x, y);
 			return (1);
 		}
 	}
+	// else if (direction == UP)
+	// {
+	// 	if (data->cubmap[y - 1][x] == '1')
+	// 	{
+	// 		// printf("x = %d et y = %d\n", x, y);
+	// 		return (1);
+	// 	}
+	// }
 	else if (direction == RIGHT)
 	{
 		if (data->cubmap[y][x + 1] == '1')
@@ -40,14 +48,14 @@ int	is_wall(t_cub *data, t_point *point, int direction)
 			return (1);
 		}
 	}
-	else if (direction == LEFT)
-	{
-		if (data->cubmap[y][x - 1] == '1')
-		{
-			// printf("x = %d et y = %d\n", x, y);
-			return (1);
-		}
-	}
+	// else if (direction == LEFT)
+	// {
+	// 	if (data->cubmap[y][x - 1] == '1')
+	// 	{
+	// 		// printf("x = %d et y = %d\n", x, y);
+	// 		return (1);
+	// 	}
+	// }
 	// printf("x = %d et y = %d\n", x, y);
 	return (0);
 }
@@ -114,7 +122,7 @@ t_point	*paint_hor_intersections(t_cub *data, int direction)
 	intersection = first_hor_intersection(data, direction);
 	if (direction == UP || direction == NONE)
 	{
-		printf("direction = UP\n");
+		// printf("direction = UP\n");
 		while (intersection->y >= 63 && intersection->x >= 63
 			&& !(is_wall(data, intersection, direction)))
 			next_hor_intersection(data, direction, &intersection);
@@ -134,12 +142,7 @@ t_point	*paint_hor_intersections(t_cub *data, int direction)
 t_point	*paint_ver_intersections(t_cub *data, int direction)
 {
 	t_point	*intersection;
-	// int		direction;
 
-	// if ((data->ray > 0 && data->ray < PI / 2) || (data->ray > 3 * PI / 2 && data->ray < (2 * PI)))
-		// direction = RIGHT;
-	// else
-		// direction = LEFT;
 	intersection = first_ver_intersection(data, direction);
 	if (direction == RIGHT || direction == NONE)
 	{
@@ -154,7 +157,7 @@ t_point	*paint_ver_intersections(t_cub *data, int direction)
 	}
 	if (direction == LEFT || direction == NONE)
 	{
-		printf("direction = LEFT\n");
+		// printf("direction = LEFT\n");
 		while (intersection->x >= 0 && intersection->y >= 0 && intersection->y < data->map_height && intersection->x < data->map_len
 			&& !(is_wall(data, intersection, direction)))
 			next_ver_intersection(data, direction, &intersection);
@@ -214,14 +217,14 @@ void	paint_ray(t_cub *data)
 	hor_intersection = paint_hor_intersections(data, forward_direction(data));
 	hor_distance = get_distance(data->ray, player, hor_intersection);
 	ver_distance = get_distance(data->ray, player, ver_intersection);
+	printf("hor distance = %f amd ver distance = %f\n", hor_distance, ver_distance);
 	if (hor_distance < ver_distance)
 	{
-		// printf("hor distance = %f amd ver distance = %f\n", hor_distance, ver_distance);
 		dda(data, player, hor_intersection);
 	}
 	else
 	{
-		printf("ver distance = %f and coordinate x = %f and y =%f\n", ver_distance, ver_intersection->x, ver_intersection->y);
+		// printf("ver distance = %f and coordinate x = %f and y =%f\n", ver_distance, ver_intersection->x, ver_intersection->y);
 		dda(data, player, ver_intersection);
 	}
 }
@@ -240,7 +243,10 @@ void	paint_fov(t_cub *data)
 	while(fov_ray > tmp - 0.52)
 	{
 		data->ray = fov_ray;
-		paint_ray(data);
+		if (data->ray == PI || data->ray == PI / 2 || data->ray == 0 || data->ray == 3 * PI / 2)
+			// cas speciaux
+		else
+			paint_ray(data);
 		fov_ray = fov_ray - incr;
 	}
 	data->ray = tmp - 0.52;

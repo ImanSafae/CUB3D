@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/09 21:28:18 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/10 16:02:56 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	dda(t_cub *data, t_point *a, t_point *b)
 	xinc = dx / steps;
 	yinc = dy / steps;
 	printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
-	while (i < steps)
+	while (i <= steps)
 	{
-		printf("x = %f et y = %f\n", a->x, a->y);
+		// printf("x = %f et y = %f\n", a->x, a->y);
 		put_pixel_to_image(data, a->x, a->y, GREEN);
 		a->x = a->x + xinc;
 		a->y = a->y + yinc;
