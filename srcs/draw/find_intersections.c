@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/19 21:53:15 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:02:09 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ t_point	*first_ver_intersection(t_cub *data, t_directions *dir)
 		intersection->x = ((int)(data->poz[0]) / 64) * 64 + 63;
 	else
 		intersection->x = ((int)(data->poz[0]) / 64) * 64 - 1;
-	intersection->y = data->poz[1] + ((data->poz[0]) - intersection->x) / tan(angle);
+	intersection->y = data->poz[Y] + ((data->poz[X]) - intersection->x) / tan(angle);
 	// printf("angle = %f\n", data->ray);
 	return (intersection);
 }
