@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/20 12:19:51 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:24:13 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	draw_character(t_cub *data, int x, int y)
 
 void	show_character(t_cub *data)
 {
-	// Cette fonction trouve le perso sur la map et envoie sa position (en unités de map et non en pixels) à la fonction draw_character
+	// Cette fonction trouve le perso sur la map et envoie sa position 
+	//	(en unités de map et non en pixels) à la fonction draw_character
 	int		x_map;
 	int		y_map;
 	bool	found;

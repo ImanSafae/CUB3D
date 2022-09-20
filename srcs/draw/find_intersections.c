@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_intersections.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/10 18:07:27 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:35:22 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ t_point	*paint_ver_intersections(t_cub *data, int direction)
 	intersection = first_ver_intersection(data, direction);
 	if (direction == RIGHT || direction == NONE)
 	{
-		printf("direction = RIGHT\n");
+		printf("direction = RIGHT OR NONE\n");
 		while (intersection->y >= 63 && intersection->y <= data->map_height
 			&& intersection->x <= data->map_len
 			&& !(is_wall(data, intersection, direction)))
@@ -211,8 +211,8 @@ void	paint_ray(t_cub *data)
 	t_point	*player;
 
 	player = malloc(sizeof(t_point));
-	player->x = (data->poz[0]);
-	player->y = (data->poz[1]);
+	player->x = (data->poz[X]);
+	player->y = (data->poz[Y]);
 	ver_intersection = paint_ver_intersections(data, lateral_direction(data));
 	hor_intersection = paint_hor_intersections(data, forward_direction(data));
 	hor_distance = get_distance(data->ray, player, hor_intersection);
