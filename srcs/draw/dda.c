@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/10 16:02:56 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/15 21:05:18 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	abs_val(int number)
 		return (number);
 }
 
-void	dda(t_cub *data, t_point *a, t_point *b)
+void	dda(t_cub *data, t_point *a, t_point *b, int color)
 {
 	float	dx;
 	float	dy;
@@ -42,11 +42,11 @@ void	dda(t_cub *data, t_point *a, t_point *b)
 		steps = abs_val((int)dy);
 	xinc = dx / steps;
 	yinc = dy / steps;
-	printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
+	// printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
 	while (i <= steps)
 	{
 		// printf("x = %f et y = %f\n", a->x, a->y);
-		put_pixel_to_image(data, a->x, a->y, GREEN);
+		put_pixel_to_image(data, a->x, a->y, color);
 		a->x = a->x + xinc;
 		a->y = a->y + yinc;
 		i++;
