@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/20 12:19:37 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:13:58 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define LEFT 2
 # define UP 3
 # define DOWN 4
+# define VERT 1
+# define HOR 2
 
 // KEY AND MOUSE CODES
 # define LEFT_ARROW 123
@@ -115,6 +117,15 @@ typedef struct s_point
 	float	x;
 	float	y;
 }				t_point;
+
+typedef	struct s_directions
+{
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+}				t_directions;
+
 
 //typedef int	(*t_funcptr)(t_utils *, int, t_origin *, int);
 //typedef struct s_btin
@@ -218,11 +229,13 @@ void			init_window(t_cub **data, int length, int height);
 int				find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
 int				find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
 int				find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
-t_point			*paint_hor_intersections(t_cub *data, int direction);
-t_point			*paint_ver_intersections(t_cub *data, int direction);
-void			dda(t_cub *data, t_point *a, t_point *b);
-int	abs_val(int number);
+t_point			*paint_hor_intersections(t_cub *data, t_directions *dir);
+t_point			*paint_ver_intersections(t_cub *data, t_directions *dir);
+void			dda(t_cub *data, t_point *a, t_point *b, int color);
+int				abs_val(int number);
 void			paint_fov(t_cub *data);
+float			get_right_angle(t_cub *data, t_directions *dir, int grid);
+void			show_character(t_cub *data);
 
 // HOOKS
 int		rotation_and_moves(int keycode, t_cub *data);

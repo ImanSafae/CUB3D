@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/20 12:24:13 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:13:15 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	draw2d(t_cub *cub)
 	show_character(cub);
 	paint_fov(cub);
 	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->img_ptr, 0, 0);
-	// mlx_key_hook(m->win_ptr, rotation_and_moves, cub);
+	mlx_key_hook(m->win_ptr, rotation_and_moves, cub);
 	// printf("closest wall = %d\n", find_closest_hor_wall(cub, (int)(cub->poz[0]), (int)(cub->poz[0]), RIGHT));
 	mlx_loop(m->mlx_ptr);
 }
