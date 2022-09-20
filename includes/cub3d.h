@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 20:01:53 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:19:37 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,30 @@
 # define CENTER 400
 
 
+
 // COLORS
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
 # define GREY 0x00808080
 # define YELLOW 0x00FFFF00
+# define RED 0x00FF0000
+# define GREEN 0x00008000
+
+// DIRECTIONS
+# define NONE 0
+# define RIGHT 1
+# define LEFT 2
+# define UP 3
+# define DOWN 4
+
+// KEY AND MOUSE CODES
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define ESC 53
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 
 // STRUCTS
 typedef struct s_mlx
@@ -84,11 +103,18 @@ typedef struct s_cub
 	double	poz[2];
 	int		map_height;
 	int		map_len;
-	int		angle;
+	float	angle;
+	float	ray;
 	int		i;
 	int		j;
 	t_mlx	*mlx;
 }	t_cub;
+
+typedef struct s_point
+{
+	float	x;
+	float	y;
+}				t_point;
 
 //typedef int	(*t_funcptr)(t_utils *, int, t_origin *, int);
 //typedef struct s_btin
@@ -178,17 +204,27 @@ void		free_data(t_data *d);
 char		**free_tab(char **tab);
 
 // MLX
-void		put_pixel_to_image(t_cub *image, int x, int y, int color);
+void		put_pixel_to_image(t_cub *data, float x, float y, int color);
 void		init_window(t_cub **data, int length, int height);
 
 // 2D MAP (to be deleted later)
-void		draw2d(t_cub *cub);
-void		draw_map(t_cub *cub);
-void		get_map_param(t_cub *cub);
-int			get_y_coordinate(t_cub *data, int y_pixel);
-int			get_x_coordinate(t_cub *data, int x_pixel, int y);
-void		put_pixel_to_image(t_cub *data, int x, int y, int color);
-void		get_map_param(t_cub *cub);
-void		init_window(t_cub **data, int length, int height);
+void			draw2d(t_cub *cub);
+void			draw_map(t_cub *cub);
+void			get_map_param(t_cub *cub);
+int				get_y_coordinate(t_cub *data, float y_pixel);
+int				get_x_coordinate(t_cub *data, float x_pixel, int y);
+void			get_map_param(t_cub *cub);
+void			init_window(t_cub **data, int length, int height);
+int				find_closest_wall(t_cub *data, int direction_ver, int direction_hor);
+int				find_closest_ver_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+int				find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int direction);
+t_point			*paint_hor_intersections(t_cub *data, int direction);
+t_point			*paint_ver_intersections(t_cub *data, int direction);
+void			dda(t_cub *data, t_point *a, t_point *b);
+int	abs_val(int number);
+void			paint_fov(t_cub *data);
+
+// HOOKS
+int		rotation_and_moves(int keycode, t_cub *data);
 
 #endif

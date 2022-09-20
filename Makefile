@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
+#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/02 14:11:26 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/09/09 18:34:46 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ SRCS				=	main_cub.c \
 SRCS_DRAW_DIR			=	./srcs/draw/
 SRCS_DRAW 				=	draw_map.c \
 							draw_utils.c \
+							find_intersections.c \
+							dda.c \
+							hooks.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \

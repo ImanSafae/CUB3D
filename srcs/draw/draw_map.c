@@ -6,7 +6,7 @@
 /*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/08 15:06:01 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:19:51 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ static int	ft_strlen(const char *s)
 		length++;
 	}
 	return (length);
+}
+
+void	init_character_pos(t_cub *data, int x, int y)
+{
+	// renseigne sur la position du joueur lorsque le jeu commence, en pixels (il est donc pour l'instant au centre de son carré)
+	data->poz[X] = (float)((x * 64) + 31);
+	data->poz[Y] = (float)((y * 64) + 31);
 }
 
 void	draw_character(t_cub *data, int x, int y)
@@ -47,32 +54,34 @@ void	draw_character(t_cub *data, int x, int y)
 	}
 }
 
-void	paint_character(t_cub *data)
+void	show_character(t_cub *data)
 {
-	int	x;
-	int	y;
+	// Cette fonction trouve le perso sur la map et envoie sa position (en unités de map et non en pixels) à la fonction draw_character
+	int		x_map;
+	int		y_map;
 	bool	found;
 
-	x = 0;
-	y = 0;
+	x_map = 0;
+	y_map = 0;
 	found = false;
-	while (y < data->map_height / 64)
+	while (y_map < data->map_height / 64)
 	{
-		while (x < ft_strlen(data->cubmap[y]))
+		while (x_map < ft_strlen(data->cubmap[y_map]))
 		{
-			if (is_persona(data->cubmap[y][x], OPEN))
+			if (is_persona(data->cubmap[y_map][x_map], OPEN))
 			{
 				found = true;
 				break ;
 			}
-			x++;
+			x_map++;
 		}
 		if (found == true)
 			break ;
-		x = 0;
-		y++;
+		x_map = 0;
+		y_map++;
 	}
-	draw_character(data, x, y);
+	draw_character(data, x_map, y_map);
+	init_character_pos(data, x_map, y_map);
 }
 
 void	paint_wall_or_space(t_cub *data, int x_pixel, int y_pixel)
@@ -108,8 +117,8 @@ void	draw_map(t_cub *cub)
 		i_x = 0;
 		i_y++;
 	}
-	paint_character(cub);
 }
+
 
 void	draw2d(t_cub *cub)
 {
@@ -119,6 +128,10 @@ void	draw2d(t_cub *cub)
 	get_map_param(cub);
 	init_window(&cub, cub->map_len, cub->map_height);
 	draw_map(cub);
+	show_character(cub);
+	paint_fov(cub);
 	mlx_put_image_to_window(m->mlx_ptr, m->win_ptr, m->img_ptr, 0, 0);
+	// mlx_key_hook(m->win_ptr, rotation_and_moves, cub);
+	// printf("closest wall = %d\n", find_closest_hor_wall(cub, (int)(cub->poz[0]), (int)(cub->poz[0]), RIGHT));
 	mlx_loop(m->mlx_ptr);
 }

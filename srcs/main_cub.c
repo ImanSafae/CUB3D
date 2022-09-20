@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/02 12:39:50 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/10 18:00:59 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
+	c->angle = 2;
+	c->ray = c->angle;
 	draw2d(c);
 	}
 	else
