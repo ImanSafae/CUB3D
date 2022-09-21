@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/20 16:02:09 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 20:39:59 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ float	get_right_angle(t_cub *data, t_directions *dir, int grid)
 
 void	check_limits(t_cub *data, t_point *wall)
 {
-	printf("checking limits : y = %f\n", wall->y);
+	// printf("checking limits : y = %f\n", wall->y);
 	if (wall->x < 0)
 		wall->x = 0;
 	if (wall->y < 0)
