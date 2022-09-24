@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 20:41:40 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 15:05:21 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
-	c->angle = PI/3;
+	c->angle = (PI) / 3;
 	c->ray = c->angle;
 	draw2d(c);
 	}

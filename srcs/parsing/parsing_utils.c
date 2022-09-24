@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/02 11:23:27 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:33:08 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,20 +133,20 @@ t_cub	*clean_map(t_data *d)
 	}
 	newcub->cubmap[d->i] = NULL;
 	newcub->map_height = d->map_size;
-	printf("print the map before memset: (cubmap=%p)\n", d->map);
-	d->i = 0;
-	while (d->map && d->map[d->i])
-	{
-		printf("(%s)\n", d->map[d->i]);
-		d->i++;
-	}
-	printf("print the map after memset: (cubmap=%p)\n", newcub->cubmap);
-	d->i = 0;
-	while (newcub->cubmap && newcub->cubmap[d->i])
-	{
-		printf("(%s)\n", newcub->cubmap[d->i]);
-		d->i++;
-	}
+	// printf("print the map before memset: (cubmap=%p)\n", d->map);
+	// d->i = 0;
+	// while (d->map && d->map[d->i])
+	// {
+	// 	printf("(%s)\n", d->map[d->i]);
+	// 	d->i++;
+	// }
+	// printf("print the map after memset: (cubmap=%p)\n", newcub->cubmap);
+	// d->i = 0;
+	// while (newcub->cubmap && newcub->cubmap[d->i])
+	// {
+	// 	printf("(%s)\n", newcub->cubmap[d->i]);
+	// 	d->i++;
+	// }
 	//printf("======================			clean_map finish ()\n");
 	return (newcub);
 }

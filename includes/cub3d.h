@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 19:49:35 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 15:49:38 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,12 +231,14 @@ int				find_closest_hor_wall(t_cub *data, int x_pixel, int y_pixel, int directio
 t_point			*paint_hor_intersections(t_cub *data, t_directions *dir);
 t_point			*paint_ver_intersections(t_cub *data, t_directions *dir);
 void			dda(t_cub *data, t_point *a, t_point *b, int color);
-int				abs_val(int number);
+float			abs_val(float number);
 void			paint_fov(t_cub *data);
 float			get_right_angle(t_cub *data, t_directions *dir, int grid);
 void			show_character(t_cub *data);
+void			draw_character(t_cub *data);
+int				is_wall(t_cub *data, t_point *point, t_directions *dir, int grid);
 
 // HOOKS
-int		rotation_and_moves(int keycode, t_cub *data);
+int				rotation_and_moves(int keycode, t_cub *data);
 
 #endif

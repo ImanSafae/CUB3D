@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 19:44:06 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:13:33 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,47 @@ void	init_character_pos(t_cub *data, int x, int y)
 	data->poz[1] = (float)((y * 64) + 31);
 }
 
-void	draw_character(t_cub *data, int x, int y)
+void	draw_character(t_cub *data)
 {
-	int	center_x;
-	int	center_y;
 	int	i;
 	int	j;
 
-	center_x = (x * 64) + 32;
-	center_y = (y * 64) + 32;
-	i = center_x - 5;
-	j = center_y - 5;
-	while (j <= center_y + 5)
+	i = data->poz[0] - 4;
+	j = data->poz[1] - 4;
+	while (j <= data->poz[1] + 5)
 	{
-		while (i <= center_x + 5)
+		while (i <= data->poz[0] + 5)
 		{
 			put_pixel_to_image(data, i, j, YELLOW);
 			i++;
 		}
-		i = center_x - 5;
+		i = data->poz[0] - 5;
 		j++;
 	}
 }
+
+// void	draw_character(t_cub *data, int x, int y)
+// {
+// 	int	center_x;
+// 	int	center_y;
+// 	int	i;
+// 	int	j;
+
+// 	center_x = (x * 64) + 32;
+// 	center_y = (y * 64) + 32;
+// 	i = center_x - 5;
+// 	j = center_y - 5;
+// 	while (j <= center_y + 5)
+// 	{
+// 		while (i <= center_x + 5)
+// 		{
+// 			put_pixel_to_image(data, i, j, YELLOW);
+// 			i++;
+// 		}
+// 		i = center_x - 5;
+// 		j++;
+// 	}
+// }
 
 void	show_character(t_cub *data)
 {
@@ -80,8 +99,8 @@ void	show_character(t_cub *data)
 		x_map = 0;
 		y_map++;
 	}
-	draw_character(data, x_map, y_map);
 	init_character_pos(data, x_map, y_map);
+	draw_character(data);
 }
 
 void	paint_wall_or_space(t_cub *data, int x_pixel, int y_pixel)

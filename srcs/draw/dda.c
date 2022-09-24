@@ -6,13 +6,13 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/15 21:05:18 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/22 19:49:07 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	abs_val(int number)
+float	abs_val(float number)
 {
 	if (number < 0)
 		return (number * -1);
