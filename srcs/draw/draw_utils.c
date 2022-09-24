@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/22 21:56:12 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:28:44 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	put_pixel_to_image(t_cub *data, float x, float y, int color)
 	int		position;
 	t_mlx	*m;
 
-	m = data->mlx;
+	m = data->mini;
 	position = ((int)x * (m->bpix / 8)) + ((int)y * m->line);
 	pixel = m->img_addr + ((int)y * m->line + (int)x * (m->bpix / 8));
 	*(unsigned int *)pixel = color;
@@ -86,7 +86,7 @@ void	init_window(t_cub **data, int length, int height)
 {
 	t_mlx	*m;
 
-	m = (*data)->mlx;
+	m = (*data)->mini;
 	m->mlx_ptr = mlx_init();
 	m->win_ptr = mlx_new_window(m->mlx_ptr, length, height, "cub3d");
 	m->img_ptr = mlx_new_image(m->mlx_ptr, length, height);

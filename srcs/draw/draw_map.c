@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/24 16:13:33 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:25:26 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	draw2d(t_cub *cub)
 {
 	t_mlx	*m;
 
-	m = cub->mlx;
+	m = cub->mini;
 	get_map_param(cub);
 	init_window(&cub, cub->map_len, cub->map_height);
 	draw_map(cub);

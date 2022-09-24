@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/22 21:33:47 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:26:11 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
-	cub->mlx = malloc(sizeof(t_mlx));
-	if (cub->mlx == NULL)
-		error("malloc cub->mlx failed");
+	cub->mini = malloc(sizeof(t_mlx));
+	if (cub->mini == NULL)
+		error("malloc cub->mini failed");
 	//cub->texture_img = malloc(sizeof(t_img) * 5);
 	//if (cub->texture_img == NULL)
 	//	error("malloc cub->texture_img failed");
-	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mlx);
+	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mini);
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);

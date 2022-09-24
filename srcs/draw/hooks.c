@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:03:44 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/24 16:14:14 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:26:34 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int	rotation_and_moves(int keycode, t_cub *data)
 	draw_map(data);
 	draw_character(data);
 	paint_fov(data);
-	mlx_put_image_to_window(data->mlx->mlx_ptr, data->mlx->win_ptr, data->mlx->img_ptr, 0, 0);
+	mlx_put_image_to_window(data->mini->mlx_ptr, data->mini->win_ptr, data->mini->img_ptr, 0, 0);
 	return (0);
 }

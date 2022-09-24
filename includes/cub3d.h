@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/24 15:49:38 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/24 16:25:16 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ typedef struct s_cub
 	float	ray;
 	int		i;
 	int		j;
-	t_mlx	*mlx;
+	t_mlx	*mini;
+	t_mlx	*map3d;
 }	t_cub;
 
 typedef struct s_point
