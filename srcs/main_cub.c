@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 20:41:40 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:05:52 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 void	init_mlxptr(t_cub *c)
 {
-	c->mlx->mlx_ptr = NULL;
-	c->mlx->win_ptr = NULL;
-	c->mlx->img_addr = NULL;
-	c->mlx->img_ptr = NULL;
-	c->mlx->bpix = 0;
-	c->mlx->end = 0;
-	c->mlx->bpix = 0;
+	c->mini->mlx_ptr = NULL;
+	c->mini->win_ptr = NULL;
+	c->mini->img_addr = NULL;
+	c->mini->img_ptr = NULL;
+	c->mini->bpix = 0;
+	c->mini->end = 0;
+	c->mini->bpix = 0;
 }
 
 int	main(int argc, char **argv)
@@ -45,9 +45,11 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
-	c->angle = PI/3;
+	c->angle = (PI) / 2;
 	c->ray = c->angle;
-	draw2d(c);
+	// draw2d(c);
+	draw_3d(c);
+	// texturing(c);
 	}
 	else
 		error("Wrong number of arguments");

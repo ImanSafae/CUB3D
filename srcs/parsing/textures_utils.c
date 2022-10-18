@@ -103,19 +103,19 @@ void	parse_txtur(t_cub *c)
 	void	*mlx;
 	int		i;
 
-	c->t[NO].img = NULL;
-	c->t[EA].img = NULL;
-	c->t[SO].img = NULL;
-	c->t[WE].img = NULL;
+	c->textures[NO].img = NULL;
+	c->textures[EA].img = NULL;
+	c->textures[SO].img = NULL;
+	c->textures[WE].img = NULL;
 
 	mlx = mlx_init();
 	i = -1;
 	while (c->txtur && c->txtur[++i])
 	{
 		//printf("mlx_ptr = %p , c->filename=(%s), t[i].img= %p\n", mlx, c->txtur[i], c->t[i].img);
-		c->t[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], &c->t[i].width, &c->t[i].height);
-		c->t[i].addr = mlx_get_data_addr(c->t[i].img, &c->t[i].bpix, &c->t[i].line, &c->t[i].endian);
-		if (c->t[i].img == NULL)
+		c->textures[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], &c->textures[i].width, &c->textures[i].height);
+		c->textures[i].addr = mlx_get_data_addr(c->textures[i].img, &c->textures[i].bpix, &c->textures[i].line, &c->textures[i].endian);
+		if (c->textures[i].img == NULL)
 			error("xpm_to_image couldn't get texture image");
 		//printf("image created = %s and her adress=%p\nwidth=%d\nheight=%d\n", c->t[i].img, c->t[i].addr, c->t[i].width, c->t[i].height);
 	}

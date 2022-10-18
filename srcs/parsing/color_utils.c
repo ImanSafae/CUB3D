@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:59:29 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/22 14:13:26 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:05:53 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ long	ft_atoi_custom(const char *str)
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == 0)
-			error("Error from atoi_custom please check color argument");
+			error("Error from atoi_custom: please check color argument");
 		result *= 10;
 		result += str[i] - 48;
 		i++;
@@ -52,7 +52,7 @@ int	isnum_check(char *t)
 		if ((t[i] < 48 || t[i] > 57) && t[i] != 43 && t[i] != 45)
 		{
 			printf("carac=(%c)\n", t[i]);
-			error ("message from isnum_check : a character isn't digit");
+			error ("message from isnum_check : a character isn't in digit format");
 		}
 		i++;
 	}

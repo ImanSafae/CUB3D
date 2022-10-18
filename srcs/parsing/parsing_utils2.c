@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/02 13:53:26 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:00:47 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	persona_position(t_cub *cub)
 	int	i;
 	int	j;
 
-	printf("======================			persona_position()\n");
+	// printf("======================			persona_position()\n");
 	i = 1;
 	while (cub->cubmap && cub->cubmap[i] && cub->cubmap[i + 1] != NULL)
 	{
@@ -61,21 +61,21 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
-	cub->mlx = malloc(sizeof(t_mlx));
-	if (cub->mlx == NULL)
-		error("malloc cub->mlx failed");
+	cub->mini = malloc(sizeof(t_mlx));
+	if (cub->mini == NULL)
+		error("malloc cub->mini failed");
 	//cub->texture_img = malloc(sizeof(t_img) * 5);
 	//if (cub->texture_img == NULL)
 	//	error("malloc cub->texture_img failed");
-	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mlx);
+	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mini);
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);
 	parse_txtur(cub);
-	printf("\n=========\nimage created for NO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[NO].img, cub->t[NO].addr, cub->t[NO].width, cub->t[NO].height);
-	printf("\n=========\nimage created for EA= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[EA].img, cub->t[EA].addr, cub->t[NO].width, cub->t[NO].height);
-	printf("\n=========\nimage created for SO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[SO].img, cub->t[SO].addr, cub->t[NO].width, cub->t[NO].height);
-	printf("\n=========\nimage created for WE= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[WE].img, cub->t[WE].addr, cub->t[NO].width, cub->t[NO].height);
+	// printf("\n=========\nimage created for NO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[NO].img, cub->t[NO].addr, cub->t[NO].width, cub->t[NO].height);
+	// printf("\n=========\nimage created for EA= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[EA].img, cub->t[EA].addr, cub->t[NO].width, cub->t[NO].height);
+	// printf("\n=========\nimage created for SO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[SO].img, cub->t[SO].addr, cub->t[NO].width, cub->t[NO].height);
+	// printf("\n=========\nimage created for WE= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[WE].img, cub->t[WE].addr, cub->t[NO].width, cub->t[NO].height);
 
 	persona_position(cub);
 }

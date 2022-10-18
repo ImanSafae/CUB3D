@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 13:34:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2021/11/01 15:42:11 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:02:06 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	car;
 	char	*car_;
-	size_t	i;
+	int		i;
 
 	car_ = (char *)s;
 	car = (char)c;

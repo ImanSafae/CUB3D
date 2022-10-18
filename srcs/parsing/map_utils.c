@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 13:47:53 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 20:11:40 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/22 21:32:49 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	good_line(int end, int index, int start, char *line)
 	int		i;
 	char	*trimed;
 
-	printf("======================			good_line(%d)\n", index);
+	// printf("======================			good_line(%d)\n", index);
 	if (bad_charac(line))
 		error("bad character in map");
 	trimed = ft_strtrim(line, " \n");

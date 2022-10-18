@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
+#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/20 16:48:01 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/10/18 23:43:54 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
-FLAGS				=	-Werror -Wextra -Wall -g -fsanitize=address
+CFLAGS				=	-Werror -Wextra -Wall -O2
 INCLUDES			=	-lmlx -I./includes/
 LIB					=	libft/libft.a
 
@@ -21,13 +21,18 @@ SRCS_DIR			=	./srcs/
 SRCS				=	main_cub.c \
 
 SRCS_DRAW_DIR			=	./srcs/draw/
-SRCS_DRAW 				=	draw_map.c \
+SRCS_DRAW 				=	minimap2.c \
+							draw_3d.c \
 							draw_utils.c \
-							find_intersections.c \
 							dda.c \
-							hooks.c \
-							direction_drawers.c \
-							# intersections.c \
+							key_hooks.c \
+							intersections.c \
+							draw_3d_utils.c \
+							minimap.c \
+							raycasting_utils.c \
+							colors.c \
+							textures.c \
+							# mouse_hooks.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \
@@ -59,7 +64,7 @@ all:		${NAME}
 			make all -C ./libft
 
 ${NAME}:	${OBJS} ${PARS_OBJS} ${DRAW_OBJS}
-			gcc $(FLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
+			gcc $(CFLAGS) ${LIB} ${SRCS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
 
 
 

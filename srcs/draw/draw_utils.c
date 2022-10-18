@@ -6,69 +6,54 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:48:21 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/10 15:59:32 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/11 19:35:45 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	ft_strlen(const char *s)
+
+double	get_y_coordinate(double y_pixel)
 {
-	int	length;
+	double	y;
 
-	length = 0;
-	while (s[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
-}
-
-int	get_y_coordinate(t_cub *data, float y_pixel)
-{
-	int	i;
-	int	y;
-
-	i = 1;
-	y = 0;
-	while (i < data->map_height / 64)
-	{
-		if ((y_pixel + 1 <= 64 * i) && (y_pixel + 1 >= 64 * (i - 1)))
-		{
-			y = (i - 1);
-			break ;
-		}
-		i++;
-	}
+	y = y_pixel / 64;
 	return (y);
 }
 
-int	get_x_coordinate(t_cub *data, float x_pixel, int y)
+double	get_x_coordinate(double x_pixel)
 {
-	int	i;
-	int	x;
+	double	x;
 
-	i = 1;
-	x = 0;
-	while (i <= ft_strlen(data->cubmap[y]))
-	{
-		if ((x_pixel + 1 <= 64 * i) && (x_pixel + 1 >= 64 * (i - 1)))
-		{
-			x = (i - 1);
-			break ;
-		}
-		i++;
-	}
+	x = x_pixel / 64;
 	return (x);
 }
 
-void	put_pixel_to_image(t_cub *data, float x, float y, int color)
+void	put_pixel_to_image(t_cub *data, double x, double y, int color)
 {
 	char	*pixel;
 	int		position;
 	t_mlx	*m;
 
-	m = data->mlx;
+	// printf("x = %f y = %f\n", x, y);
+	m = data->mini;
+	if (x < 0 || y < 0 || x >= data->map_len || y >= data->map_height )
+		return ;
+	position = ((int)x * (m->bpix / 8)) + ((int)y * m->line);
+	pixel = m->img_addr + ((int)y * m->line + (int)x * (m->bpix / 8));
+	*(unsigned int *)pixel = color;
+}
+
+void	put_pixel_to_image_3d(t_cub *data, double x, double y, int color)
+{
+	char	*pixel;
+	int		position;
+	t_mlx	*m;
+
+	// printf("x = %f y = %f\n", x, y);
+	m = data->map3d;
+	if (x < 0 || y < 0 || x > WIDTH_3D - 1 || y > HEIGHT_3D - 1)
+		return ;
 	position = ((int)x * (m->bpix / 8)) + ((int)y * m->line);
 	pixel = m->img_addr + ((int)y * m->line + (int)x * (m->bpix / 8));
 	*(unsigned int *)pixel = color;
@@ -85,7 +70,7 @@ void	init_window(t_cub **data, int length, int height)
 {
 	t_mlx	*m;
 
-	m = (*data)->mlx;
+	m = (*data)->mini;
 	m->mlx_ptr = mlx_init();
 	m->win_ptr = mlx_new_window(m->mlx_ptr, length, height, "cub3d");
 	m->img_ptr = mlx_new_image(m->mlx_ptr, length, height);
