@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 12:17:05 by itaouil           #+#    #+#             */
-/*   Updated: 2022/09/20 20:39:59 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/19 01:20:56 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,41 +296,46 @@ void	set_directions(t_cub *data, t_directions *directions)
 	
 }
 
-void	paint_ray(t_cub *data)
+void	cast_ray(t_cub *data)
 {
-	float	ver_distance;
-	float	hor_distance;
-	t_point	*ver_intersection;
-	t_point	*hor_intersection;
-	t_point	*player;
-	t_directions	*dir;
+	(void)double	ver_distance;
+	(void)double	hor_distance;
+	(void)t_point	*ver_intersection;
+	(void)t_point	*hor_intersection;
+	(void)t_point	*player;
+	(void)t_directions	*dir;
 
-	player = malloc(sizeof(t_point));
-	player->x = (data->poz[0]);
-	player->y = (data->poz[1]);
-	dir = malloc(sizeof(t_directions));
-	set_directions(data, dir);
-	hor_intersection = paint_hor_intersections(data, dir);
-	ver_intersection = paint_ver_intersections(data, dir);
-	ver_distance = get_distance(data->ray, player, ver_intersection);
-	hor_distance = get_distance(data->ray, player, hor_intersection);
-	// printf("hor distance = %f amd ver distance = %f\n", hor_distance, ver_distance);
-	// put_pixel_to_image(data, hor_intersection->x, hor_intersection->y, WHITE);
-	// put_pixel_to_image(data, ver_intersection->x, ver_intersection->y, WHITE);
-	// printf("hor intersection->x = %f amd ver intersection->x = %f\n", hor_intersection->x, ver_intersection->x);
-	// printf("hor intersection->y = %f amd ver intersection->y = %f\n", hor_intersection->y, ver_intersection->y);
-	// printf("angle = %f, ray = %f\n", data->angle, data->ray);
-	printf("angle = %f\n", data->ray);
-	if (hor_distance < ver_distance)
-	{
-		dda(data, player, hor_intersection, RED);
-		printf("x = %f, y = %f\n", hor_intersection->x, hor_intersection->y);
-	}
-	else
-	{
-		dda(data, player, ver_intersection, GREEN);
-		printf("x = %f, y = %f\n", ver_intersection->x, ver_intersection->y);
-	}
+	//player = malloc(sizeof(t_point));
+	//player->x = (data->poz[X]);
+	//player->y = (data->poz[Y]);
+	////dir = malloc(sizeof(t_directions));
+	//set_directions(data, dir);
+	//hor_intersection = paint_hor_intersections(data, dir);
+	//ver_intersection = paint_ver_intersections(data, dir);
+	//ver_distance = get_distance(data->ray, player, ver_intersection);
+	//hor_distance = get_distance(data->ray, player, hor_intersection);
+	//// printf("hor distance = %f amd ver distance = %f\n", hor_distance, ver_distance);
+	//// put_pixel_to_image(data, hor_intersection->x, hor_intersection->y, WHITE);
+	//// put_pixel_to_image(data, ver_intersection->x, ver_intersection->y, WHITE);
+	//// printf("hor intersection->x = %f amd ver intersection->x = %f\n", hor_intersection->x, ver_intersection->x);
+	//// printf("hor intersection->y = %f amd ver intersection->y = %f\n", hor_intersection->y, ver_intersection->y);
+	//// printf("angle = %f, ray = %f\n", data->angle, data->ray);
+	//printf("angle = %f\n", data->ray);
+	//if (hor_distance < ver_distance)
+	//{
+	//	dda(data, player, hor_intersection, RED);
+	//	printf("x = %f, y = %f\n", hor_intersection->x, hor_intersection->y);
+	//}
+	//else
+	//{
+	//	dda(data, player, ver_intersection, GREEN);
+	//	printf("x = %f, y = %f\n", ver_intersection->x, ver_intersection->y);
+	//}
+	up_right(data);
+	up_left(data);
+	down_right(data);
+	down_left(data);
+	cardinals(data);
 }
 
 // void	cardinal_rays(t_cub *data)
@@ -352,15 +357,21 @@ void	paint_ray(t_cub *data)
 // 	dda(data, player, wall);
 // }
 
-void	paint_fov(t_cub *data)
+void	ray_casting(t_cub *data)
 {
 	// float	fov_ray;
 	// float	incr;
-
+	double	angle_test;
+	get_fov(data->angle, START);
+	get_fov(data->angle, FINISH);
 	// fov_ray = data->angle + 0.52; // ang + 30deg
 	// incr = 1.05 / 320; // dist between 2 rays
 	// data->ray = fov_ray; // stock ray
-	paint_ray(data);
+	angle_test = 0;
+	while (angle_test < PI * 2)
+	{
+		cast_ray(data);
+	}
 	// fov_ray = fov_ray - incr;
 	// while (fov_ray > data->angle - 0.52) // ang - 30deg
 	// {

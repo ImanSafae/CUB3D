@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 19:49:35 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:50:54 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define HEIGHT 800
 # define WIDTH 1024
 # define CENTER 400
+
 
 
 // COLORS
@@ -104,8 +105,8 @@ typedef struct s_cub
 	double	poz[2];
 	int		map_height;
 	int		map_len;
-	float	angle;
-	float	ray;
+	double	angle;
+	double	ray;
 	int		i;
 	int		j;
 	t_mlx	*mlx;
@@ -113,8 +114,8 @@ typedef struct s_cub
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }				t_point;
 
 typedef	struct s_directions
@@ -232,7 +233,7 @@ t_point			*paint_hor_intersections(t_cub *data, t_directions *dir);
 t_point			*paint_ver_intersections(t_cub *data, t_directions *dir);
 void			dda(t_cub *data, t_point *a, t_point *b, int color);
 int				abs_val(int number);
-void			paint_fov(t_cub *data);
+void			ray_casting(t_cub *data);
 float			get_right_angle(t_cub *data, t_directions *dir, int grid);
 void			show_character(t_cub *data);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
+#    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/09/13 18:57:44 by itaouil          ###   ########.fr        #
+#    Updated: 2022/09/20 16:48:01 by abelhadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS_DRAW 				=	draw_map.c \
 							find_intersections.c \
 							dda.c \
 							hooks.c \
+							direction_drawers.c \
 							# intersections.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/

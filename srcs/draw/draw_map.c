@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/19 19:44:06 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:13:15 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int	ft_strlen(const char *s)
 void	init_character_pos(t_cub *data, int x, int y)
 {
 	// renseigne sur la position du joueur lorsque le jeu commence, en pixels (il est donc pour l'instant au centre de son carré)
-	data->poz[0] = (float)((x * 64) + 31);
-	data->poz[1] = (float)((y * 64) + 31);
+	data->poz[X] = (float)((x * 64) + 31);
+	data->poz[Y] = (float)((y * 64) + 31);
 }
 
 void	draw_character(t_cub *data, int x, int y)
@@ -56,7 +56,8 @@ void	draw_character(t_cub *data, int x, int y)
 
 void	show_character(t_cub *data)
 {
-	// Cette fonction trouve le perso sur la map et envoie sa position (en unités de map et non en pixels) à la fonction draw_character
+	// Cette fonction trouve le perso sur la map et envoie sa position 
+	//	(en unités de map et non en pixels) à la fonction draw_character
 	int		x_map;
 	int		y_map;
 	bool	found;
