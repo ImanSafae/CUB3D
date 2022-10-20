@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/19 00:57:02 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:12:57 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@
 # define HEIGHT 800
 # define WIDTH 1024
 # define CENTER 400
-# define WIDTH_3D 1024
-# define HEIGHT_3D 800
+# define WIDTH_3D 640
+# define HEIGHT_3D 400
 # define SPEED 3
 # define WALLS_SIDE 64
-# define DIST_TO_PLANE 510
+# define DIST_TO_PLANE 255
 // # define FOV 1.0472
 // # define HALF_FOV
 

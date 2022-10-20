@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:51:00 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/19 00:59:02 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:18:38 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,6 @@ int	wall_orientation(t_cub *data)
 	int				orientation;
 
 	get_directions_3d(data, &dir);
-	// dir.down = 0;
-	// dir.up = 0;
-	// dir.left = 0;
-	// dir.right = 0;
-	// if (data->ray > 0 && data->ray < PI)
-	// 	dir.up = 1;
-	// else
-	// 	dir.down = 1;
-	// if ((data->ray > 0 && data->ray < PI / 2) || (data->ray > 3 * PI / 2 && data->ray < 2 * PI))
-	// 	dir.right = 1;
-	// else
-	// 	dir.left = 1;
 	if (data->closest_wall == HOR)
 	{
 		if (dir.up == 1)
@@ -68,7 +56,6 @@ int	wall_orientation(t_cub *data)
 		else
 			orientation = WE;
 	}
-	// free(dir);
 	return (orientation);
 }
 

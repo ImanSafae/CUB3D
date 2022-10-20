@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:53:14 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/19 00:57:44 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:44:40 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,26 @@ void	draw_wall_slice(t_cub *data, double distance_to_wall, double x)
 	double				projected_height;
 	double				beginning;
 	double				y;
+	double				end;
 	unsigned int		color;
 
-	projected_height = 64 / distance_to_wall * DIST_TO_PLANE;
+	projected_height = WALLS_SIDE / (1 + distance_to_wall) * DIST_TO_PLANE;
 	beginning = ((HEIGHT_3D - projected_height) / 2) - 1; // beginning of the wall column in y coordinate
-	y = 0;
+	y = beginning - 1;
+	end = projected_height + beginning;
 	// color = get_wall_color(data);
-	while (y < projected_height)
+	if (projected_height > HEIGHT_3D)
 	{
-		color = texturing(data, projected_height, y);
-		put_pixel_to_image_3d(data, x, y + beginning, color);
+		y = beginning + ((projected_height - HEIGHT_3D) / 2) - 1;
+		end = projected_height - ((projected_height - HEIGHT_3D) / 2);
+	}
+	while (y < end)
+	{
 		y++;
+		if ((x < 0 || y < 0 || x > WIDTH_3D - 1 || y > HEIGHT_3D - 1))
+			continue;
+		color = texturing(data, projected_height, y - beginning);
+		put_pixel_to_image_3d(data, x, y, color);
 	}
 }
 
