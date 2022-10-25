@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_cub.c                                         :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/18 21:05:52 by itaouil          ###   ########.fr       */
+/*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
+/*   Updated: 2022/10/25 02:02:37 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-#include "../includes/get_next_line.h"
+#include "../../includes/cub3d.h"
 
 void	init_mlxptr(t_cub *c)
 {
@@ -32,7 +31,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		
-		c = parsing(argv[1]);
+		c = parsing_bonus(argv[1]);
 /*
 		init_mlxptr(c);
 		c->mlx = mlx_init();
@@ -45,11 +44,8 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
-	c->angle = (PI) / 2;
 	c->ray = c->angle;
-	// draw2d(c);
-	draw_3d(c);
-	// texturing(c);
+	draw_3d_bonus(c);
 	}
 	else
 		error("Wrong number of arguments");

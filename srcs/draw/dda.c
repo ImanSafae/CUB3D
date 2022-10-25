@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/11 00:36:06 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:18:27 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,41 @@ double	abs_val(double number)
 		return (number);
 }
 
-void	dda(t_cub *data, t_point a, t_point b, int color)
+static int	dda_number_of_steps(t_point a, t_point b)
 {
 	double	dx;
 	double	dy;
 	int		steps;
+
+	dx = (double)(b.x) - (double)(a.x);
+	dy = (double)(b.y) - (double)(a.y);
+	if (abs_val(dx) > abs_val(dy))
+		steps = abs_val((int)dx);
+	else
+		steps = abs_val((int)dy);
+	return (steps);
+}
+
+void	dda(t_cub *data, t_point a, t_point b, int color)
+{
 	double	xinc;
 	double	yinc;
+	int		steps;
 	int		i;
 
 	if (b.x < 0)
 		b.x = 0;
 	if (b.y < 0)
 		b.y = 0;
-	dx = (double)(b.x) - (double)(a.x);
-	dy = (double)(b.y) - (double)(a.y);
 	i = 1;
-	if (abs_val(dx) > abs_val(dy))
-		steps = abs_val((int)dx);
-	else
-		steps = abs_val((int)dy);
-	xinc = dx / steps;
-	yinc = dy / steps;
-	// printf("dx = %f et dy = %f et xinc = %f et yinc = %f\n", dx, dy, xinc, yinc);
+	steps = dda_number_of_steps(a, b);
+	xinc = ((double)(b.x) - (double)(a.x)) / steps;
+	yinc = ((double)(b.y) - (double)(a.y)) / steps;
 	while (i <= steps)
 	{
-		// printf("x = %f et y = %f\n", a.x, a.y);
 		put_pixel_to_image(data, a.x, a.y, color);
-		a.x = a.x + xinc;
-		a.y = a.y + yinc;
+		a.x += xinc;
+		a.y += yinc;
 		i++;
 	}
 }

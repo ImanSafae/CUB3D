@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:27:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/17 13:46:21 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/24 21:24:38 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,10 @@ char	*get_next_line(int fd)
 		eof_indicator += 1;
 		return (NULL);
 	}
-	//	write(1,"gnlgn\n",6);
 	truebuf = true_buffer(fd);
 	if (truebuf == NULL && save == NULL)
 		return (NULL);
-	//	write(1,"gnlgn\n",6);
 	save = gnl_strjoin(save, truebuf);
-	//	write(1,"gnlgn\n",6);
-
 	nextline = n_inbuf(save, &(eof_indicator));
 	if (eof_indicator == 1)
 		save = save_inbuf(save);

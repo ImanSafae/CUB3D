@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:57:21 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/22 14:26:55 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/24 21:29:19 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 int	is_map_or_error(char c)
 {
-	//printf("c=(%c)\n", c);
 	if (c == '1')
 		return (1);
 	if (c == '\n')

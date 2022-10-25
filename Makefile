@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
+#    By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/10/20 16:18:15 by itaouil          ###   ########.fr        #
+#    Updated: 2022/10/25 03:13:02 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,35 @@ NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
 CFLAGS				=	-Werror -Wextra -Wall -O2
-INCLUDES			=	-lmlx -I./includes/
+INCLUDES			=	-lmlx -IMLX -LMLX -I./includes/
 LIB					=	libft/libft.a
 
 SRCS_DIR			=	./srcs/
-SRCS				=	main_cub.c \
+SRCS				=	main.c \
 
 SRCS_DRAW_DIR			=	./srcs/draw/
-SRCS_DRAW 				=	minimap2.c \
-							draw_3d.c \
+SRCS_DRAW 				=	draw_3d.c \
 							draw_utils.c \
 							dda.c \
 							key_hooks.c \
-							intersections.c \
+							ver_intersections.c \
 							draw_3d_utils.c \
-							minimap.c \
+							movements.c \
 							raycasting_utils.c \
+							raycasting_utils2.c \
 							colors.c \
-							textures.c \
-							# mouse_hooks.c \
+							hor_intersections.c \
+							
+SRCS_BONUS_DIR			=	./srcs/bonus/
+SRCS_BONUS				=	draw_3d_bonus.c \
+							key_hooks_bonus.c \
+							mini_hooks.c \
+							main_bonus.c \
+							minimap.c \
+							minimap2.c \
+							parsing_bonus.c \
+							parsing_utils_bonus.c \
+							textures_bonus.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \
@@ -44,7 +54,7 @@ SRCS_PARS				=	get_next_line.c \
 							color_utils.c \
 							clean_map_utils.c \
 							utils.c \
-							utils2.c \
+							free.c \
 							textures_utils.c \
 							textures_utils2.c \
 							
@@ -59,6 +69,9 @@ PARS_OBJS			=	$(addprefix ${SRCS_PARS_DIR},${SRCS_PARS:.c=.o})
 SRCS_DRAW_PATH		=	$(addprefix ${SRCS_DRAW_DIR},${SRCS_DRAW})
 DRAW_OBJS			=	$(addprefix ${SRCS_DRAW_DIR},${SRCS_DRAW:.c=.o})
 
+SRCS_BONUS_PATH		=	$(addprefix ${SRCS_BONUS_DIR},${SRCS_BONUS})
+BONUS_OBJS			=	$(addprefix ${SRCS_BONUS_DIR},${SRCS_BONUS:.c=.o})
+
 
 all:		${NAME}
 			make all -C ./libft
@@ -70,12 +83,15 @@ ${NAME}:	${OBJS} ${PARS_OBJS} ${DRAW_OBJS}
 
 clean:
 			make clean -C ./libft
-			${RM} ${OBJS} ${PARS_OBJS} ${DRAW_OBJS}
+			${RM} ${OBJS} ${PARS_OBJS} ${DRAW_OBJS} ${BONUS_OBJS}
 
 fclean:		clean
 			${RM} ${NAME}
 
 re:			 fclean all
+
+bonus:		fclean ${BONUS_OBJS} ${PARS_OBJS} ${DRAW_OBJS}
+			gcc $(CFLAGS) ${LIB} ${SRCS_BONUS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
 
 push:
 			git add .

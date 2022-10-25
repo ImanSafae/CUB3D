@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:33:03 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/08/23 11:37:00 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/10/25 02:31:37 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-
-/*
-typedef struct s_data
-{
-	char	*filename;
-	char	**file;
-	char	**map;
-	char	**texture_color;
-	int		map_size;
-	int		error_no;
-	int		found;
-	int		fd;
-	int		mid_line;
-	int		i;
-	int		j;
-}	t_data;
-*/
 
 void	free_data(t_data *d)
 {
@@ -57,4 +39,13 @@ char	**free_tab(char **tab)
 	free(tab);
 	tab = NULL;
 	return (tab);
+}
+
+void	end_cub(t_cub *data)
+{
+	mlx_destroy_window(data->map3d->mlx_ptr, data->map3d->win_ptr);
+	free_tab(data->cubmap);
+	free_tab(data->txtur);
+	free(data->player);
+	exit(EXIT_SUCCESS);
 }

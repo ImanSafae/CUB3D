@@ -3,39 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:17:19 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/19 00:58:42 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/25 03:23:25 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+double	closest_wall(t_cub *data, t_point *hor_inter, t_point *ver_inter)
+{
+	double			hor_distance;
+	double			ver_distance;
+	double			closest;
+
+	hor_distance = get_distance(data->player, hor_inter);
+	ver_distance = get_distance(data->player, ver_inter);
+	if (ver_distance < hor_distance)
+	{
+		closest = ver_distance;
+		data->closest_wall = VERT;
+		data->intersection.x = ver_inter->x;
+		data->intersection.y = ver_inter->y;
+	}
+	else
+	{
+		closest = hor_distance;
+		data->closest_wall = HOR;
+		data->intersection.x = hor_inter->x;
+		data->intersection.y = hor_inter->y;
+	}
+	data->dist_to_closest_wall = closest;
+	return (closest);
+}
+
 void	get_directions_3d(t_cub *data, t_directions *dir)
 {
-	// t_directions	*dir;
-
-	// dir = malloc(sizeof(t_directions));
 	dir->down = 0;
 	dir->up = 0;
 	dir->left = 0;
 	dir->right = 0;
-	// if (data->ray == 0 || data->ray == PI || data->ray == PI / 2 || data->ray == 3 * PI / 2)
-	// {
-	// 	//cette condition ne devrait jamais etre checkée
-	// 	printf("can't do this angle yet\n");
-	// 	exit(EXIT_FAILURE);
-	// }
 	if (data->ray > 0 && data->ray < PI)
 		dir->up = 1;
 	else
 		dir->down = 1;
-	if ((data->ray > 0 && data->ray < PI / 2) || (data->ray > 3 * PI / 2 && data->ray < 2 * PI))
+	if ((data->ray > 0 && data->ray < PI / 2)
+		|| (data->ray > 3 * PI / 2 && data->ray < 2 * PI))
 		dir->right = 1;
 	else
 		dir->left = 1;
-	// return (dir);
 }
 
 void	lay_background(t_cub *data)
@@ -70,8 +87,9 @@ void	init_3d_map(t_cub *data)
 
 	map3d = data->map3d;
 	map3d->mlx_ptr = mlx_init();
-	map3d->win_ptr = mlx_new_window(map3d->mlx_ptr, WIDTH_3D, HEIGHT_3D, "the cub");
+	map3d->win_ptr = mlx_new_window(map3d->mlx_ptr,
+			WIDTH_3D, HEIGHT_3D, "the cub");
 	map3d->img_ptr = mlx_new_image(map3d->mlx_ptr, WIDTH_3D, HEIGHT_3D);
-	map3d->img_addr = mlx_get_data_addr(map3d->img_ptr, 
-		&(map3d->bpix), &(map3d->line), &(map3d->end));
+	map3d->img_addr = mlx_get_data_addr(map3d->img_ptr,
+			&(map3d->bpix), &(map3d->line), &(map3d->end));
 }
