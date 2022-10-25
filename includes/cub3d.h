@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/25 03:28:56 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 01:04:25 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,8 @@ double			get_right_angle(t_cub *data, t_directions *dir, int grid);
 t_point			*check_ver_intersections(t_cub *data, t_point *player, t_directions *dir);
 t_point			*check_hor_intersections(t_cub *data, t_point *player, t_directions *dir);
 double			closest_wall(t_cub *data, t_point *hor_inter, t_point *ver_inter);
+t_point			*get_first_hor_intersection(t_cub *data, t_point *player, t_directions *dir);
+t_point			*get_first_ver_intersection(t_cub *data, t_point *player, t_directions *dir);
 
 // 3D RENDER
 void			draw_3d(t_cub *data);
