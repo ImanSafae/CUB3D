@@ -79,7 +79,7 @@ void	clean_texture(t_cub *c)
 
 	temp = NULL;
 	c->i = 0;
-	while (c->txtur && c->txtur[c->i] && c->i < 5)
+	while (c->txtur && c->txtur[c->i] && c->i < 7)
 	{
 		temp = ft_strtrim(c->txtur[c->i], "\n");
 		c->txtur[c->i] = cub_free(c->txtur[c->i]);
@@ -106,6 +106,8 @@ void	parse_txtur(t_cub *c)
 	c->textures[SO].img = NULL;
 	c->textures[WE].img = NULL;
 	c->textures[DOOR].img = NULL;
+	c->textures[RANDOM].img = NULL;
+	c->textures[END].img = NULL;
 	mlx = mlx_init();
 	i = -1;
 	while (c->txtur && c->txtur[++i])

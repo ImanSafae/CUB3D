@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/26 01:04:25 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 02:35:05 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_cub
 {
 	char	**cubmap;
 	char	**txtur;
-	t_img	textures[5];   // PARSED TEXTURE FILES 
+	t_img	textures[7];   // PARSED TEXTURE FILES 
 	int		rgb[2][3];
 	double	poz[2];
 	int		map_height;
@@ -175,6 +175,8 @@ enum	e_type
 	SO,
 	WE,
 	DOOR,
+	RANDOM,
+	END,
 	OPEN,
 	WALL,
 	SPACE,
@@ -288,6 +290,7 @@ t_point			*check_hor_intersections(t_cub *data, t_point *player, t_directions *d
 double			closest_wall(t_cub *data, t_point *hor_inter, t_point *ver_inter);
 t_point			*get_first_hor_intersection(t_cub *data, t_point *player, t_directions *dir);
 t_point			*get_first_ver_intersection(t_cub *data, t_point *player, t_directions *dir);
+double			find_wall(t_cub *data);
 
 // 3D RENDER
 void			draw_3d(t_cub *data);
@@ -339,5 +342,9 @@ void			get_texture_color_bonus(t_data *d);
 int				find_mapstart_bonus(char **file);
 void			copy_textures_tab_bonus(t_data *d, t_cub *c);
 void			get_color_bonus(t_data *d, t_cub *cub);
+
+// TEXTURES
+unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall);
+void			textures_rng(t_cub *data);
 
 #endif

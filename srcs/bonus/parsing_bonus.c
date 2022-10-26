@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:51:17 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/25 02:53:33 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 01:35:05 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ t_data	*init_data_bonus(t_data *data, char *filename)
 	data->map = NULL;
 	data->filename = ft_strdup(filename);
 	data->texture_color = NULL;
-	data->texture_color = malloc(sizeof(char *) * 8);
+	data->texture_color = malloc(sizeof(char *) * 10);
 	if (data->texture_color == NULL)
 		error("malloc failed with texture_color");
-	data->texture_color[7] = NULL;
+	data->texture_color[9] = NULL;
 	data->file = NULL;
 	data->error_no = 0;
 	data->found = 0;

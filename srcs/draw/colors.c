@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:51:00 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/25 02:48:31 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 02:10:00 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,6 @@ int	get_floor_or_ceiling_color(t_cub *data, int floor_or_ceiling)
 	return (color);
 }
 
-int	check_for_door(t_cub *data)
-{
-	int	x_map;
-	int	y_map;
-
-	x_map = data->intersection.x / 64;
-	y_map = data->intersection.y / 64;
-	if (data->cubmap[y_map][x_map] == 'D')
-		return (1);
-	return (0);
-}
 
 int	wall_orientation(t_cub *data)
 {
@@ -79,8 +68,6 @@ int	wall_orientation(t_cub *data)
 	int				orientation;
 
 	get_directions_3d(data, &dir);
-	if (check_for_door(data))
-		return (DOOR);
 	if (data->closest_wall == HOR)
 	{
 		if (dir.up == 1)

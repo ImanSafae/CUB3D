@@ -6,7 +6,7 @@
 #    By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/10/25 03:13:02 by itaouil          ###   ########.fr        #
+#    Updated: 2022/10/26 02:30:17 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_BONUS				=	draw_3d_bonus.c \
 							parsing_bonus.c \
 							parsing_utils_bonus.c \
 							textures_bonus.c \
+							textures_parsing_bonus.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
 SRCS_PARS				=	get_next_line.c \

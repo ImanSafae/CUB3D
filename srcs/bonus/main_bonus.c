@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/25 02:02:37 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 02:35:32 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
+	textures_rng(c);
 	c->ray = c->angle;
 	draw_3d_bonus(c);
 	}
