@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/26 01:22:54 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:40:50 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ void	draw_map(t_cub *cub)
 	{
 		while (i_x < cub->mini_width)
 		{
-			// printf("width = %d, height = %d\n", cub->mini_width, cub->mini_height);
-			// if ((i_x + 1) % 64 == 0 || (i_y + 1) % 64 == 0)
-			// 	put_pixel_to_image(cub, i_x, i_y, BLACK);
-			// else
 			paint_wall_or_space(cub, i_x, i_y);
 			i_x++;
 		}

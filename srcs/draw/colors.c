@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:51:00 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:10:00 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 16:52:41 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	get_floor_or_ceiling_color(t_cub *data, int floor_or_ceiling)
 	color = create_trgb(0, red, green, blue);
 	return (color);
 }
-
 
 int	wall_orientation(t_cub *data)
 {

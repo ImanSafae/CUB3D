@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:10:09 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/24 18:18:27 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/26 16:53:14 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	dda(t_cub *data, t_point a, t_point b, int color)
 	yinc = ((double)(b.y) - (double)(a.y)) / steps;
 	while (i <= steps)
 	{
-		put_pixel_to_image(data, a.x, a.y, color);
+		put_pixel_to_image_3d(data, a.x, a.y, color);
 		a.x += xinc;
 		a.y += yinc;
 		i++;

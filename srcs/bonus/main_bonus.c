@@ -6,22 +6,22 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:35:32 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:38:28 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	init_mlxptr(t_cub *c)
-{
-	c->mini->mlx_ptr = NULL;
-	c->mini->win_ptr = NULL;
-	c->mini->img_addr = NULL;
-	c->mini->img_ptr = NULL;
-	c->mini->bpix = 0;
-	c->mini->end = 0;
-	c->mini->bpix = 0;
-}
+// void	init_mlxptr(t_cub *c)
+// {
+// 	c->mini->mlx_ptr = NULL;
+// 	c->mini->win_ptr = NULL;
+// 	c->mini->img_addr = NULL;
+// 	c->mini->img_ptr = NULL;
+// 	c->mini->bpix = 0;
+// 	c->mini->end = 0;
+// 	c->mini->bpix = 0;
+// }
 
 int	main(int argc, char **argv)
 {
@@ -32,21 +32,13 @@ int	main(int argc, char **argv)
 	{
 		
 		c = parsing_bonus(argv[1]);
-/*
-		init_mlxptr(c);
-		c->mlx = mlx_init();
-		c->win = mlx_new_window(c->mlx, WIDTH, HEIGHT, "CUB3D");
-		c->img = mlx_new_image(c->mlx, WIDTH, HEIGHT);
-		c->add = mlx_get_data_addr(c->img, &c->bpix, &c->line, &c->end);
-		draw_2d(c);
-		mlx_put_image_to_window(c->mlx, c->win, c->img, 300, 0);
-		text_dislay(c);
-		mlx_key_hook(c->win, key_manager, c);
-		mlx_loop(c->mlx);
-*/
-	textures_rng(c);
-	c->ray = c->angle;
-	draw_3d_bonus(c);
+		textures_rng(c);
+		c->ray = c->angle;
+		// while (1)
+		// {
+		// 	system("leaks cub3d");
+		// }
+		draw_3d_bonus(c);
 	}
 	else
 		error("Wrong number of arguments");

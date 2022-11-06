@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/26 02:35:05 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:40:00 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ typedef struct s_cub
 	int		j;
 	int		closest_wall;
 	double	dist_to_closest_wall;
-	t_mlx	*mini;
 	t_mlx	*map3d;
 	t_point	*player;
 	t_point	intersection;
@@ -262,7 +261,7 @@ void		    end_cub(t_cub *data);
 // ************************* R A Y - C A S T I N G **************************
 
 // MLX
-void			init_window(t_cub **data, int length, int height); // mini map window : to be deleted later
+// void			init_window(t_cub **data, int length, int height); // mini map window : to be deleted later
 void			put_pixel_to_image(t_cub *data, double x, double y, int color);
 
 // 3D RENDER UTILS

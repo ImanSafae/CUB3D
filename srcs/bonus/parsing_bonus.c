@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:51:17 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 01:35:05 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:18:19 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ void	init_cub_bonus(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
-	cub->mini = malloc(sizeof(t_mlx));
-	if (cub->mini == NULL)
-		error("malloc cub->mini failed");
 	copy_textures_tab_bonus(d, cub);
 	get_color_bonus(d, cub);
 	clean_texture(cub);

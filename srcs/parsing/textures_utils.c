@@ -37,14 +37,14 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 	char	**splited;
 
 	trimed = NULL;
-	trimed = ft_strtrim(line, " \t");
-	splited = ft_split(trimed, ' ');
+	trimed = ft_strtrim(line, " \t"); // FREE TRIMED
+	splited = ft_split(trimed, ' '); // FREE SPLITED
 	trimed = cub_free(trimed);
 	if (splited && splited[0] && ft_strcmp(splited[0], identifier) == 0)
 	{
 		if (splited[1] && ft_strlen(splited[0]) < 3)
 		{
-			d->texture_color[index] = ft_strdup(splited[1]);
+			d->texture_color[index] = ft_strdup(splited[1]); // FREE DATA TEXTURE COLOR
 			splited = free_tab(splited);
 		}
 		else
@@ -54,6 +54,7 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 		}
 		return (1);
 	}
+	splited = free_tab(splited);
 	return (0);
 }
 
@@ -120,4 +121,5 @@ void	parse_txtur(t_cub *c)
 		if (c->textures[i].img == NULL)
 			error("xpm_to_image couldn't get texture image");
 	}
+	c->txtur = free_tab(c->txtur);
 }
