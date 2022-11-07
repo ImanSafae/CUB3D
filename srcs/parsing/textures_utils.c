@@ -19,7 +19,6 @@ int	find_mapstart(char **file)
 	int	j;
 
 	i = 0;
-	//printf("file[%d]: %s\n", i, file[i]);
 	while (file && file[i])
 	{
 		j = 0;
@@ -37,16 +36,15 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 	char	*trimed;
 	char	**splited;
 
-	//printf("======================			get_texture()\n");
 	trimed = NULL;
-	trimed = ft_strtrim(line, " \t");
-	splited = ft_split(trimed, ' ');
+	trimed = ft_strtrim(line, " \t"); // FREE TRIMED
+	splited = ft_split(trimed, ' '); // FREE SPLITED
 	trimed = cub_free(trimed);
 	if (splited && splited[0] && ft_strcmp(splited[0], identifier) == 0)
 	{
 		if (splited[1] && ft_strlen(splited[0]) < 3)
 		{
-			d->texture_color[index] = ft_strdup(splited[1]);
+			d->texture_color[index] = ft_strdup(splited[1]); // FREE DATA TEXTURE COLOR
 			splited = free_tab(splited);
 		}
 		else
@@ -56,6 +54,7 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 		}
 		return (1);
 	}
+	splited = free_tab(splited);
 	return (0);
 }
 
@@ -81,7 +80,7 @@ void	clean_texture(t_cub *c)
 
 	temp = NULL;
 	c->i = 0;
-	while (c->txtur && c->txtur[c->i] && c->i < 4)
+	while (c->txtur && c->txtur[c->i] && c->i < 7)
 	{
 		temp = ft_strtrim(c->txtur[c->i], "\n");
 		c->txtur[c->i] = cub_free(c->txtur[c->i]);
@@ -107,16 +106,20 @@ void	parse_txtur(t_cub *c)
 	c->textures[EA].img = NULL;
 	c->textures[SO].img = NULL;
 	c->textures[WE].img = NULL;
-
+	c->textures[DOOR].img = NULL;
+	c->textures[RANDOM].img = NULL;
+	c->textures[END].img = NULL;
 	mlx = mlx_init();
 	i = -1;
 	while (c->txtur && c->txtur[++i])
 	{
-		//printf("mlx_ptr = %p , c->filename=(%s), t[i].img= %p\n", mlx, c->txtur[i], c->t[i].img);
-		c->textures[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i], &c->textures[i].width, &c->textures[i].height);
-		c->textures[i].addr = mlx_get_data_addr(c->textures[i].img, &c->textures[i].bpix, &c->textures[i].line, &c->textures[i].endian);
+		c->textures[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i],
+				&c->textures[i].width, &c->textures[i].height);
+		c->textures[i].addr = mlx_get_data_addr(c->textures[i].img,
+				&c->textures[i].bpix, &c->textures[i].line,
+				&c->textures[i].endian);
 		if (c->textures[i].img == NULL)
 			error("xpm_to_image couldn't get texture image");
-		//printf("image created = %s and her adress=%p\nwidth=%d\nheight=%d\n", c->t[i].img, c->t[i].addr, c->t[i].width, c->t[i].height);
 	}
+	c->txtur = free_tab(c->txtur);
 }

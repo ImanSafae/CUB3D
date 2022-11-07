@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:27:25 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/09/01 20:11:57 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/10/24 21:26:00 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 
 t_data	*init_data(t_data *data, char *filename)
 {
-	//printf("======================			init_data()\n");
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		error("malloc failed with data");
 	data->map = NULL;
 	data->filename = ft_strdup(filename);
-	//printf("data->filename =%s\n", data->filename);
 	data->texture_color = NULL;
 	data->texture_color = malloc(sizeof(char *) * 7);
 	if (data->texture_color == NULL)
@@ -34,7 +32,6 @@ t_data	*init_data(t_data *data, char *filename)
 	data->fd = 0;
 	data->mid_line = 0;
 	data->map_size = 0;
-	//printf("======================			init_data finish()\n");
 	return (data);
 }
 
@@ -42,7 +39,6 @@ t_cub	*extract_data(int descrip_fd, t_data *data)
 {
 	t_cub	*cub;
 
-	//printf("======================			extract_data()\n");
 	parse_file(descrip_fd, data);
 	if (data->file && data->file[0] == NULL)
 		error("Empty file");
@@ -52,7 +48,6 @@ t_cub	*extract_data(int descrip_fd, t_data *data)
 	last_validation(data, cub);
 	init_cub(data, cub);
 	return (cub);
-	//printf("======================			extract data finish()\n");
 }
 
 t_cub	*parsing(char *description_file)
@@ -61,7 +56,6 @@ t_cub	*parsing(char *description_file)
 	t_cub	*cub;
 	int		descrip_fd;
 
-	//printf("data->filename =%s\n", data->filename);
 	cub = NULL;
 	data = NULL;
 	data = init_data(data, description_file);

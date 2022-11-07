@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/03 20:00:47 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/07 15:12:19 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	get_angle(char c)
 	if (c == 'E')
 		return (2 * PI);
 	if (c == 'S')
-		return (-PI / 2);
+		return (3 * PI / 2);
 	if (c == 'W')
 		return (PI);
 	return (0);
@@ -32,7 +32,6 @@ int	persona_position(t_cub *cub)
 	int	i;
 	int	j;
 
-	// printf("======================			persona_position()\n");
 	i = 1;
 	while (cub->cubmap && cub->cubmap[i] && cub->cubmap[i + 1] != NULL)
 	{
@@ -44,7 +43,6 @@ int	persona_position(t_cub *cub)
 				cub->poz[X] = (double)j;
 				cub->poz[Y] = (double)i;
 				cub->angle = get_angle(cub->cubmap[i][j]);
-				//printf("x=%d, y=%d\n", cub->poz[X], cub->poz[Y]);
 				return (1);
 			}
 			j++;
@@ -61,21 +59,15 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
-	cub->mini = malloc(sizeof(t_mlx));
-	if (cub->mini == NULL)
-		error("malloc cub->mini failed");
-	//cub->texture_img = malloc(sizeof(t_img) * 5);
-	//if (cub->texture_img == NULL)
-	//	error("malloc cub->texture_img failed");
-	//printf("x=%ld, y=%ld\n mlx_box=%p\n", cub->poz[X], cub->poz[Y], cub->mini);
+	cub->s_key = false;
+	cub->w_key = false;
+	cub->a_key = false;
+	cub->d_key = false;
+	cub->left_arrow = false;
+	cub->right_arrow = false;
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);
 	parse_txtur(cub);
-	// printf("\n=========\nimage created for NO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[NO].img, cub->t[NO].addr, cub->t[NO].width, cub->t[NO].height);
-	// printf("\n=========\nimage created for EA= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[EA].img, cub->t[EA].addr, cub->t[NO].width, cub->t[NO].height);
-	// printf("\n=========\nimage created for SO= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[SO].img, cub->t[SO].addr, cub->t[NO].width, cub->t[NO].height);
-	// printf("\n=========\nimage created for WE= (%s)\nimg_addr=%p\nwidth=%d\nheight=%d\n\n", cub->t[WE].img, cub->t[WE].addr, cub->t[NO].width, cub->t[NO].height);
-
 	persona_position(cub);
 }
