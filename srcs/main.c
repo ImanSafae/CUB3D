@@ -6,23 +6,23 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/06 22:51:02 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:33:44 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../includes/get_next_line.h"
 
-void	init_mlxptr(t_cub *c)
-{
-	c->mini->mlx_ptr = NULL;
-	c->mini->win_ptr = NULL;
-	c->mini->img_addr = NULL;
-	c->mini->img_ptr = NULL;
-	c->mini->bpix = 0;
-	c->mini->end = 0;
-	c->mini->bpix = 0;
-}
+// void	init_mlxptr(t_cub *c)
+// {
+// 	c->mini->mlx_ptr = NULL;
+// 	c->mini->win_ptr = NULL;
+// 	c->mini->img_addr = NULL;
+// 	c->mini->img_ptr = NULL;
+// 	c->mini->bpix = 0;
+// 	c->mini->end = 0;
+// 	c->mini->bpix = 0;
+// }
 
 int	main(int argc, char **argv)
 {
