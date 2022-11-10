@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/06 23:40:00 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:12:13 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define DIST_TO_PLANE 255
 # define MINI_RATIO 10
 # define DIST_TO_OPEN_DOORS 20
+# define ANGLE_INCREMENT (PI / 3) / WIDTH_3D
 
 // COLORS
 # define WHITE 0x00FFFFFF
@@ -112,6 +113,7 @@ typedef struct s_data
 	int		mid_line;
 	int		i;
 	int		j;
+	bool	paintings_mode;
 }	t_data;
 
 typedef struct s_point
@@ -124,7 +126,9 @@ typedef struct s_cub
 {
 	char	**cubmap;
 	char	**txtur;
-	t_img	textures[7];   // PARSED TEXTURE FILES 
+	t_img	textures[6];   // PARSED TEXTURE FILES
+	t_img	painting_textures[8];
+	t_img	right_texture;
 	int		rgb[2][3];
 	double	poz[2];
 	int		map_height;
@@ -148,6 +152,9 @@ typedef struct s_cub
 	bool	d_key;
 	bool	left_arrow;
 	bool	right_arrow;
+	bool	fake_door_mode;
+	bool	paintings_mode;
+	int		time_left;
 }	t_cub;
 
 typedef	struct s_directions
@@ -174,8 +181,15 @@ enum	e_type
 	SO,
 	WE,
 	DOOR,
-	RANDOM,
 	END,
+	RANDOM1,
+	RANDOM2,
+	RANDOM3,
+	RANDOM4,
+	RANDOM5,
+	RANDOM6,
+	RANDOM7,
+	RANDOM8,
 	OPEN,
 	WALL,
 	SPACE,
@@ -341,9 +355,12 @@ void			get_texture_color_bonus(t_data *d);
 int				find_mapstart_bonus(char **file);
 void			copy_textures_tab_bonus(t_data *d, t_cub *c);
 void			get_color_bonus(t_data *d, t_cub *cub);
+void		    parse_painting_txtur(t_cub *c);
 
 // TEXTURES
 unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall);
 void			textures_rng(t_cub *data);
+t_img			get_random_painting(t_cub *data, int index);
+
 
 #endif

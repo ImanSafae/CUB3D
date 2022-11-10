@@ -77,11 +77,18 @@ void	clean_texture(t_cub *c)
 {
 	int		ret;
 	char	*temp;
+	int		stop;
 
 	temp = NULL;
 	c->i = 0;
-	while (c->txtur && c->txtur[c->i] && c->i < 7)
+	if (c->paintings_mode == true)
+		stop = 16;
+	else
+		stop = 6;
+	while (c->txtur && c->txtur[c->i] && c->i < stop)
 	{
+		if (stop == 16 && c->i == 6)
+			c->i = 8;
 		temp = ft_strtrim(c->txtur[c->i], "\n");
 		c->txtur[c->i] = cub_free(c->txtur[c->i]);
 		c->txtur[c->i] = ft_strdup(temp);
@@ -107,11 +114,11 @@ void	parse_txtur(t_cub *c)
 	c->textures[SO].img = NULL;
 	c->textures[WE].img = NULL;
 	c->textures[DOOR].img = NULL;
-	c->textures[RANDOM].img = NULL;
 	c->textures[END].img = NULL;
+	// c->textures[RANDOM].img = NULL;
 	mlx = mlx_init();
-	i = -1;
-	while (c->txtur && c->txtur[++i])
+	i = -1; 
+	while (c->txtur && c->txtur[++i] && i < 6)
 	{
 		c->textures[i].img = mlx_xpm_file_to_image(mlx, c->txtur[i],
 				&c->textures[i].width, &c->textures[i].height);
@@ -121,5 +128,6 @@ void	parse_txtur(t_cub *c)
 		if (c->textures[i].img == NULL)
 			error("xpm_to_image couldn't get texture image");
 	}
-	c->txtur = free_tab(c->txtur);
+	if (c->paintings_mode == false)
+		c->txtur = free_tab(c->txtur);
 }

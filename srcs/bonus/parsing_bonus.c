@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:51:17 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/06 23:18:19 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/09 23:08:14 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,20 @@ void	init_cub_bonus(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
+	cub->s_key = false;
+	cub->w_key = false;
+	cub->a_key = false;
+	cub->d_key = false;
+	cub->left_arrow = false;
+	cub->right_arrow = false;
+	cub->fake_door_mode = false;
+	cub->paintings_mode = d->paintings_mode;
 	copy_textures_tab_bonus(d, cub);
 	get_color_bonus(d, cub);
 	clean_texture(cub);
 	parse_txtur(cub);
+	if (d->paintings_mode == true)
+		parse_painting_txtur(cub);
 	persona_position(cub);
 }
 
@@ -32,13 +42,23 @@ t_data	*init_data_bonus(t_data *data, char *filename)
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		error("malloc failed with data");
+	if (!ft_strncmp(filename, "peach_castle_bonus.cub", ft_strlen("peach_castle_bonus.cub")))
+		data->paintings_mode = true;
+	else
+		data->paintings_mode = false;
 	data->map = NULL;
 	data->filename = ft_strdup(filename);
 	data->texture_color = NULL;
-	data->texture_color = malloc(sizeof(char *) * 10);
+	if (data->paintings_mode == true)
+		data->texture_color = malloc(sizeof(char *) * 17);
+	else
+		data->texture_color = malloc(sizeof(char *) * 9); // includes floor and ceiling colors
 	if (data->texture_color == NULL)
 		error("malloc failed with texture_color");
-	data->texture_color[9] = NULL;
+	if (data->paintings_mode == true)
+		data->texture_color[16] = NULL;
+	else
+		data->texture_color[8] = NULL;
 	data->file = NULL;
 	data->error_no = 0;
 	data->found = 0;

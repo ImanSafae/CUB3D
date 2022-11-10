@@ -6,33 +6,33 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 02:29:16 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:41:42 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:38:03 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	textures_rng(t_cub *data)
+t_img	get_random_painting(t_cub *data, int index)
 {
-	int	i;
-	int	j;
-	int	randint;
+	t_img	texture;
 
-	i = 0;
-	j = 0;
-	while (data->cubmap && data->cubmap[i])
-	{
-		while (data->cubmap[i][j])
-		{
-			randint = rand() % 14;
-			if (randint == 0 && data->cubmap[i][j] == '1')
-				data->cubmap[i][j] = 'R';
-			j++;
-		}
-		i++;
-		j = 0;
-		
-	}
+	if (index == RANDOM1)
+		texture = data->painting_textures[0];
+	if (index == RANDOM2)
+		texture = data->painting_textures[1];
+	if (index == RANDOM3)
+		texture = data->painting_textures[2];
+	if (index == RANDOM4)
+		texture = data->painting_textures[3];
+	if (index == RANDOM5)
+		texture = data->painting_textures[4];
+	if (index == RANDOM6)
+		texture = data->painting_textures[5];
+	if (index == RANDOM7)
+		texture = data->painting_textures[6];
+	if (index == RANDOM8)
+		texture = data->painting_textures[7];
+	return (texture);
 }
 
 int	check_for_door_or_special_txtr(t_cub *data)
@@ -44,10 +44,24 @@ int	check_for_door_or_special_txtr(t_cub *data)
 	y_map = data->intersection.y / WALLS_SIDE;
 	if (data->cubmap[y_map][x_map] == 'D')
 		return (DOOR);
-	else if (data->cubmap[y_map][x_map] == 'G')
+	else if (data->cubmap[y_map][x_map] == 'Z')
 		return (END);
+	else if (data->cubmap[y_map][x_map] == 'P')
+		return (RANDOM1);
+	else if (data->cubmap[y_map][x_map] == 'Q')
+		return (RANDOM2);
 	else if (data->cubmap[y_map][x_map] == 'R')
-		return (RANDOM);
+		return (RANDOM3);
+	else if (data->cubmap[y_map][x_map] == 'S')
+		return (RANDOM4);
+	else if (data->cubmap[y_map][x_map] == 'T')
+		return (RANDOM5);
+	else if (data->cubmap[y_map][x_map] == 'U')
+		return (RANDOM6);
+	else if (data->cubmap[y_map][x_map] == 'V')
+		return (RANDOM7);
+	else if (data->cubmap[y_map][x_map] == 'X')
+		return (RANDOM8);
 	return (0);
 }
 
@@ -78,17 +92,29 @@ int	wall_orientation_bonus(t_cub *data)
 	return (orientation);
 }
 
+t_img	assign_texture(t_cub *data)
+{
+	int		orientation;
+	t_img	texture;
+	
+	orientation = wall_orientation_bonus(data);
+	if (orientation == RANDOM1 || orientation == RANDOM2 || orientation == RANDOM3
+		|| orientation == RANDOM4 || orientation == RANDOM5 || orientation == RANDOM6
+		|| orientation == RANDOM7 || orientation == RANDOM8)
+		texture = get_random_painting(data, orientation);
+	else
+		texture = data->textures[orientation];
+	return (texture);
+}
+
 unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall)
 {
 	unsigned int	texture_pixel;
 	t_img			texture;
-	int				orientation;
 	int				texture_x;
 	int				texture_y;
 
-
-	orientation = wall_orientation_bonus(data);
-	texture = data->textures[orientation];
+	texture = assign_texture(data);
 	if (data->closest_wall == HOR)
 		texture_x = (int)(data->intersection.x) % WALLS_SIDE;
 	else

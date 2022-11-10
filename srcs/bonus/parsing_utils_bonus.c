@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:59:36 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:43:49 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:37:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int	good_line_bonus(int end, int index, int start, char *line)
 		if (i == 0 || index == start || index == end
 			|| i == (int)ft_strlen(trimed) - 1)
 		{
-			if (trimed[i] != '1' && trimed[i] != 'R' && trimed[i] != 'G')
+			if (trimed[i] != '1' && trimed[i] != 'O' && trimed[i] != 'P'
+				&& trimed[i] != 'Q' && trimed[i] != 'R' && trimed[i] != 'S'
+				&& trimed[i] != 'T' && trimed[i] != 'U' && trimed[i] != 'V'
+				&& trimed[i] != 'W' && trimed[i] != 'Z')
 				error("opened map");
 		}
 		else
@@ -72,9 +75,8 @@ int	bad_charac_bonus(char *c)
 	{
 		if (c[i] != '0' && c[i] != '1' && c[i] != 'N' && c[i] != 'E'
 			&& c[i] != 'S' && c[i] != 'W' && c[i] != '\n'
-			&& c[i] != '\t' && c[i] != ' ' && c[i] != 'C'
-            && c[i] != 'D' && c[i] != 'O'
-			&& c[i] != 'R' && c[i] != 'G')
+			&& c[i] != '\t' && c[i] != ' '
+            && c[i] != 'D' && c[i] != 'Z')
 		{
 			printf("bad carac=(%c)\n", c[i]);
 			return (1);
@@ -88,7 +90,7 @@ int	bad_charac_inside_bonus(char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'E'
 		&& c != 'S' && c != 'W' && c != 'D'
-		&& c != '\t' && c != ' ' && c != 'O' && c != 'R' && c != 'G')
+		&& c != '\t' && c != ' ' && c != 'R' && c != 'Z')
 	{
 		printf("bad charac inside = (%c)", c);
 		error("bad character inside map");
@@ -102,7 +104,11 @@ int	is_map_or_error_bonus(char c)
 		return (1);
 	if (c == '\n')
 		return (0);
-	if (c != 'N' && c != 'E' && c != 'S' && c != 'W' && c != 'F' && c != 'C' && c!= 'D' && c != 'R' && c != 'G')
+	if (c != 'N' && c != 'E' && c != 'S' && c != 'W' && c != 'F' && c != 'C' && c!= 'D' && c != 'R' && c != 'Z'
+			&& c != 'P' && c != 'Q' && c != 'R' && c != 'S' && c != 'T' && c != 'U' && c != 'V' && c != 'X')
+	{
+		printf("c = %c\n", c);
 		error("line starting with wrong character or open map");
+	}
 	return (0);
 }

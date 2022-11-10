@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:42:08 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/06 23:13:14 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/09 22:02:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void	init_cub(t_data *d, t_cub *cub)
 	cub->poz[X] = 0;
 	cub->poz[Y] = 0;
 	cub->map_height = d->map_size;
+	cub->s_key = false;
+	cub->w_key = false;
+	cub->a_key = false;
+	cub->d_key = false;
+	cub->left_arrow = false;
+	cub->right_arrow = false;
+	cub->fake_door_mode = false;
+	cub->paintings_mode = false;
 	copy_textures_tab(d, cub);
 	get_color(d, cub);
 	clean_texture(cub);

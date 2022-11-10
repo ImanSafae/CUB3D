@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:55:07 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:45:41 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:26:43 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ int	check_collisions(t_cub *data, double x, double y)
 	map_y = y / WALLS_SIDE;
 	map_x = x / WALLS_SIDE;
 	if (data->cubmap[map_y][map_x] == '1' || data->cubmap[map_y][map_x] == 'D'
-		|| data->cubmap[map_y][map_x] == 'R')
+		|| data->cubmap[map_y][map_x] == 'P' || data->cubmap[map_y][map_x] == 'Q'
+		|| data->cubmap[map_y][map_x] == 'R' || data->cubmap[map_y][map_x] == 'S'
+		|| data->cubmap[map_y][map_x] == 'T' || data->cubmap[map_y][map_x] == 'U'
+		|| data->cubmap[map_y][map_x] == 'V' || data->cubmap[map_y][map_x] == 'W')
 		return (1);
-	if (data->cubmap[map_y][map_x] == 'G')
+	if (data->cubmap[map_y][map_x] == 'Z')
 		end_cub(data);
 	return (0);
 }

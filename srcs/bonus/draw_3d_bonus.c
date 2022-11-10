@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:38:16 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/06 23:36:35 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/09 23:49:31 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,23 @@ void	draw_walls_bonus(t_cub *data)
 {
 	double	i;
 	double	distance_to_wall;
-	double	incrementation;
 	double	fov_ray;
 
 	i = 1;
 	modulo_two_pi(&data->angle);
 	fov_ray = data->angle + (PI / 6);
-	incrementation = (PI / 3) / WIDTH_3D;
 	data->ray = fov_ray;
 	modulo_two_pi(&data->ray);
 	distance_to_wall = find_wall(data);
 	draw_wall_slice_bonus(data, distance_to_wall, 0);
-	fov_ray -= incrementation;
+	fov_ray -= ANGLE_INCREMENT;
 	while (i <= WIDTH_3D)
 	{
 		data->ray = fov_ray;
 		modulo_two_pi(&data->ray);
 		distance_to_wall = find_wall(data);
 		draw_wall_slice_bonus(data, distance_to_wall, i);
-		fov_ray -= incrementation;
+		fov_ray -= ANGLE_INCREMENT;
 		i++;
 	}
 	data->ray = data->angle;

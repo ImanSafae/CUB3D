@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:59:29 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/26 01:32:27 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 01:51:28 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void	verify_color(t_data *d, t_cub *cub, int index, int type)
 		while (color && color[d->i])
 			d->i++;
 		if (d->i != 3)
+		{
 			error("Invalid color format");
+		}
 		d->i = 0;
 		while (color && color[d->i])
 		{

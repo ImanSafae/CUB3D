@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:53:43 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 02:42:49 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:38:11 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int	is_wall(t_cub *data, t_point *point)
 	if (y >= data->map_height / WALLS_SIDE - 1)
 		y = (data->map_height / WALLS_SIDE) - 1;
 	if (data->cubmap[y][x] == '1' || data->cubmap[y][x] == 'D'
-		|| data->cubmap[y][x] == 'R' || data->cubmap[y][x] == 'G')
+		|| data->cubmap[y][x] == 'Z'
+		|| data->cubmap[y][x] == 'P' || data->cubmap[y][x] == 'Q'
+		|| data->cubmap[y][x] == 'R' || data->cubmap[y][x] == 'S'
+		|| data->cubmap[y][x] == 'T' || data->cubmap[y][x] == 'U'
+		|| data->cubmap[y][x] == 'V' || data->cubmap[y][x] == 'X')
 		return (1);
 	return (0);
 }

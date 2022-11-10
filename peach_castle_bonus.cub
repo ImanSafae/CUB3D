@@ -3,12 +3,18 @@ EA textures/library.xpm
 SO textures/peach_castle2.xpm
 WE textures/peach_castle3.xpm
 D textures/door_star.xpm
-R textures/bobomb.xpm
-G textures/peachpainting.xpm
+Z textures/peachpainting.xpm
 F 136,19,19
 C 66,86,229
-
-1111G1111111111111
+P textures/bobomb.xpm
+Q textures/spider_painting.xpm
+R textures/snow.xpm
+S textures/goomba.xpm
+T textures/fire.xpm
+U textures/boat.xpm
+V textures/twhomp.xpm
+X textures/mushrooms.xpm
+1111Z1111111111111
 100000001000000001
 11111D111000000001
 100000000000000001

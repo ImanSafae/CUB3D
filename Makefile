@@ -6,7 +6,7 @@
 #    By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/10/26 02:30:17 by itaouil          ###   ########.fr        #
+#    Updated: 2022/11/10 02:32:25 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS_DRAW 				=	draw_3d.c \
 							
 SRCS_BONUS_DIR			=	./srcs/bonus/
 SRCS_BONUS				=	draw_3d_bonus.c \
+							extra_modes.c \
 							key_hooks_bonus.c \
 							mini_hooks.c \
 							main_bonus.c \
@@ -92,6 +93,7 @@ fclean:		clean
 re:			 fclean all
 
 bonus:		fclean ${BONUS_OBJS} ${PARS_OBJS} ${DRAW_OBJS}
+			make all -C ./libft
 			gcc $(CFLAGS) ${LIB} ${SRCS_BONUS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
 
 push:
