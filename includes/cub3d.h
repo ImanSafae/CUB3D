@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/10 02:12:13 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:21:33 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <pthread.h>
+# include <time.h>
 # include "../libft/libft.h"
 
 # define PI 3.141592653589793
@@ -361,6 +363,9 @@ void		    parse_painting_txtur(t_cub *c);
 unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall);
 void			textures_rng(t_cub *data);
 t_img			get_random_painting(t_cub *data, int index);
+
+// FAKE DOOR MODE
+void			enable_chrono_mode(t_cub *data);
 
 
 #endif

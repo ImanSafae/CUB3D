@@ -3,25 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   extra_modes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 02:48:22 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 02:37:44 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:27:05 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
-void    parse_painting_txtur(t_cub *c)
+void	transform_door(t_cub *data)
 {
-    void	*mlx;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < data->map_height)
+	{
+		while (j < data->map_len)
+		{
+			if (data->cubmap[i][j] == 'Z')
+			{
+				data->cubmap[i][j] = 'D';
+				return ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+void	*display_chrono(void *data)
+{
+	t_cub	*cub;
+	int		i;
+	char	*chrono;
+
+	cub = (t_cub *)data;
+	i = 30;
+	while (i >= 0)
+	{
+		chrono = ft_itoa(i);
+		mlx_string_put(cub->map3d->mlx_ptr, cub->map3d->win_ptr, WIDTH_3D - 100, 50, BLACK, "HEY");
+		i--;
+		usleep(1000000);
+	}
+	printf("\n\n\nYOU LOSE... Good luck getting out of here.\n");
+	transform_door(data);
+	return (NULL);
+}
+
+void	enable_chrono_mode(t_cub *data)
+{
+	pthread_t	chrono;
+
+	pthread_create(&chrono, NULL, display_chrono, data);
+	pthread_detach(chrono);
+}
+
+void	parse_painting_txtur(t_cub *c)
+{
+	void	*mlx;
 	int		i;
 
-    i = 0;
-    while (i < 8)
+	i = 0;
+	while (i < 8)
 	{
-	    c->painting_textures[i].img = NULL;
+		c->painting_textures[i].img = NULL;
 		i++;
 	}
 	mlx = mlx_init();

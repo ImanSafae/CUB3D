@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/09 23:06:22 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:08:51 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main(int argc, char **argv)
 	t_cub	*c;
 
 	c = NULL;
+	
+	srand(time(NULL));
 	if (argc == 2)
 	{
 		

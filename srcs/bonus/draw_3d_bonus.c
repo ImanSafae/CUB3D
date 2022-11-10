@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:38:16 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/09 23:49:31 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:05:57 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	draw_3d_bonus(t_cub *data)
 	init_3d_map(data);
 	get_map_param(data);
 	find_character_in_map_bonus(data);
+	if (data->fake_door_mode == true)
+		enable_chrono_mode(data);
 	mlx_hook(map3d->win_ptr, 2, 0, key_press_bonus, data);
 	mlx_hook(map3d->win_ptr, 3, 0, key_release_bonus, data);
 	mlx_loop_hook(map3d->mlx_ptr, &render_3d_bonus, data);

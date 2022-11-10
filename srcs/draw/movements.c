@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:55:07 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 02:26:43 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:39:12 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_collisions(t_cub *data, double x, double y)
 		|| data->cubmap[map_y][map_x] == 'P' || data->cubmap[map_y][map_x] == 'Q'
 		|| data->cubmap[map_y][map_x] == 'R' || data->cubmap[map_y][map_x] == 'S'
 		|| data->cubmap[map_y][map_x] == 'T' || data->cubmap[map_y][map_x] == 'U'
-		|| data->cubmap[map_y][map_x] == 'V' || data->cubmap[map_y][map_x] == 'W')
+		|| data->cubmap[map_y][map_x] == 'V' || data->cubmap[map_y][map_x] == 'X')
 		return (1);
 	if (data->cubmap[map_y][map_x] == 'Z')
 		end_cub(data);

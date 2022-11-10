@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 22:50:48 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/26 01:52:02 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:39:16 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	mini_collisions(t_cub *data, double x, double y)
 	map_y = y / MINI_RATIO;
 	map_x = x / MINI_RATIO;
 	if (data->cubmap[map_y][map_x] == '1' || data->cubmap[map_y][map_x] == 'D'
-		|| data->cubmap[map_y][map_x] == 'R')
+		|| data->cubmap[map_y][map_x] == 'P' || data->cubmap[map_y][map_x] == 'Q'
+		|| data->cubmap[map_y][map_x] == 'R' || data->cubmap[map_y][map_x] == 'S'
+		|| data->cubmap[map_y][map_x] == 'T' || data->cubmap[map_y][map_x] == 'U'
+		|| data->cubmap[map_y][map_x] == 'V' || data->cubmap[map_y][map_x] == 'X')
 		return (1);
 	return (0);
 }
