@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap2.c                                         :+:      :+:    :+:   */
+/*   minimap2_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:17:01 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 23:41:29 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:51:13 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	find_character_in_map_bonus(t_cub *data)
 		y_map++;
 	}
 	init_character_pos(data, x_map, y_map);
-	// init_character_in_mini(data, x_map, y_map);
 }
 
 t_directions	*get_directions(t_cub *data)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_parsing_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 02:29:43 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 02:37:33 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 17:09:23 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	get_color_bonus(t_data *d, t_cub *cub)
 {
@@ -51,9 +50,11 @@ void	get_texture_color_bonus(t_data *d)
 
 	d->mid_line = find_mapstart_bonus(d->file);
 	if (d->paintings_mode == false)
-		directions = (char *[]){"NO", "EA", "SO", "WE", "D", "Z", "F", "C", NULL};
+		directions = (char *[]){"NO", "EA", "SO", "WE",
+			"D", "Z", "F", "C", NULL};
 	else
-		directions = (char *[]){"NO", "EA", "SO", "WE", "D", "Z", "F", "C", "P", "Q", "R", "S", "T", "U", "V", "X", NULL};
+		directions = (char *[]){"NO", "EA", "SO", "WE", "D", "Z", "F",
+			"C", "P", "Q", "R", "Y", "T", "U", "V", "X", NULL};
 	d->j = -1;
 	while (directions[++d->j])
 	{
@@ -65,7 +66,7 @@ void	get_texture_color_bonus(t_data *d)
 				d->found++;
 			d->i++;
 		}
-		// if (d->found > 1 || !d->found)
-		// 	error("repeated or missing texture, delete/add one and restart");
+		if (d->found > 1 || !d->found)
+			error("repeated or missing texture, delete/add one and restart");
 	}
 }

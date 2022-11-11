@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:33:03 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 00:38:39 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:04:25 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	end_cub(t_cub *data)
 	mlx_destroy_window(data->map3d->mlx_ptr, data->map3d->win_ptr);
 	free_tab(data->cubmap);
 	free(data->player);
-	if (data->fake_door_mode == true)
-		printf("YOU FOUND THE PORTAL. CONGRATS ON ESCAPING\n");
+	if (data->fake_door_mode == true && data->time_left > 0)
+		printf("YOU FOUND A WAY OUT. CONGRATS ON ESCAPING\n\n");
 	exit(EXIT_SUCCESS);
 }

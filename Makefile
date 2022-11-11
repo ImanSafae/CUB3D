@@ -6,7 +6,7 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/11/10 23:14:33 by itaouil          ###   ########.fr        #
+#    Updated: 2022/11/11 18:44:34 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,16 +34,20 @@ SRCS_DRAW 				=	draw_3d.c \
 							hor_intersections.c \
 							
 SRCS_BONUS_DIR			=	./srcs/bonus/
-SRCS_BONUS				=	draw_3d_bonus.c \
-							extra_modes.c \
+SRCS_BONUS				=	doors_bonus.c \
+							draw_3d_bonus.c \
+							fake_door_mode_bonus.c \
 							key_hooks_bonus.c \
-							mini_hooks.c \
 							main_bonus.c \
-							minimap.c \
-							minimap2.c \
+							mini_hooks_bonus.c \
+							minimap_bonus.c \
+							minimap2_bonus.c \
 							parsing_bonus.c \
+							parsing2_bonus.c \
 							parsing_utils_bonus.c \
+							rng_mode_bonus.c \
 							textures_bonus.c \
+							textures2_bonus.c \
 							textures_parsing_bonus.c \
 
 SRCS_PARS_DIR			=	./srcs/parsing/
@@ -93,11 +97,19 @@ fclean:		clean
 re:			 fclean all
 
 bonus:		fclean ${BONUS_OBJS} ${PARS_OBJS} ${DRAW_OBJS}
-			make all -C ./libft
+			@make all -C ./libft
 			gcc $(CFLAGS) ${LIB} ${SRCS_BONUS_PATH} $(SRCS_PARS_PATH) $(SRCS_DRAW_PATH) $(INCLUDES) $(FRAMEWORKS) -o $(NAME)
+
+.PHONY:		all clean fclean re bonus
 
 push:
 			git add .
 			git status
 			git commit -m cub3d
 			git push
+
+peach:		make bonus
+			./cub3d peach_castle_bonus.cub
+
+chrono:		make bonus
+			./cub3d map_tig.cub

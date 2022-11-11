@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 00:20:29 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:41:06 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,7 @@ int	main(int argc, char **argv)
 	c = NULL;
 	if (argc == 2)
 	{
-		
 		c = parsing(argv[1]);
-/*
-		init_mlxptr(c);
-		c->mlx = mlx_init();
-		c->win = mlx_new_window(c->mlx, WIDTH, HEIGHT, "CUB3D");
-		c->img = mlx_new_image(c->mlx, WIDTH, HEIGHT);
-		c->add = mlx_get_data_addr(c->img, &c->bpix, &c->line, &c->end);
-		draw_2d(c);
-		mlx_put_image_to_window(c->mlx, c->win, c->img, 300, 0);
-		text_dislay(c);
-		mlx_key_hook(c->win, key_manager, c);
-		mlx_loop(c->mlx);
-*/
 		c->ray = c->angle;
 		draw_3d(c);
 	}

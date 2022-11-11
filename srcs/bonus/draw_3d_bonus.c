@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:38:16 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 21:36:58 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:03:10 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	draw_walls_bonus(t_cub *data)
 	double	fov_ray;
 
 	i = 1;
+	turn_peach_into_bowser(data);
 	modulo_two_pi(&data->angle);
 	fov_ray = data->angle + (PI / 6);
 	data->ray = fov_ray;

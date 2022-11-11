@@ -6,12 +6,11 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:51:17 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/11 01:00:07 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:54:53 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	init_cub_bonus(t_data *d, t_cub *cub)
 {
@@ -42,17 +41,14 @@ t_data	*init_data_bonus(t_data *data, char *filename)
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		error("malloc failed with data");
-	if (!ft_strncmp(filename, "peach_castle_bonus.cub", ft_strlen("peach_castle_bonus.cub")))
-		data->paintings_mode = true;
-	else
-		data->paintings_mode = false;
+	init_paintings_mode(data, filename);
 	data->map = NULL;
 	data->filename = ft_strdup(filename);
 	data->texture_color = NULL;
 	if (data->paintings_mode == true)
 		data->texture_color = malloc(sizeof(char *) * 17);
 	else
-		data->texture_color = malloc(sizeof(char *) * 9); // includes floor and ceiling colors
+		data->texture_color = malloc(sizeof(char *) * 9);
 	if (data->texture_color == NULL)
 		error("malloc failed with texture_color");
 	if (data->paintings_mode == true)

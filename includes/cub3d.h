@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 00:59:14 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 15:39:45 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define DIST_TO_OPEN_DOORS 20
 # define ANGLE_INCREMENT (PI / 3) / WIDTH_3D
 # define CHRONO_START 30
+# define DIST_TO_TRANSFORM_PEACH 50
 
 // COLORS
 # define WHITE 0x00FFFFFF
@@ -169,15 +170,6 @@ typedef	struct s_directions
 	int	left;
 	int	right;
 }				t_directions;
-
-
-//typedef int	(*t_funcptr)(t_utils *, int, t_origin *, int);
-//typedef struct s_btin
-//{
-//	char		*b_in;
-//	char		*b_path;
-//	t_funcptr	func_ptr;
-//}	t_btin;
 
 enum	e_type
 {
@@ -360,12 +352,18 @@ void			get_texture_color_bonus(t_data *d);
 int				find_mapstart_bonus(char **file);
 void			copy_textures_tab_bonus(t_data *d, t_cub *c);
 void			get_color_bonus(t_data *d, t_cub *cub);
-void		    parse_painting_txtur(t_cub *c);
+void			parse_painting_txtur(t_cub *c);
+void			init_paintings_mode(t_data *data, char *map_name);
 
 // TEXTURES
 unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall);
 void			textures_rng(t_cub *data);
 t_img			get_random_painting(t_cub *data, int index);
+int				check_for_door_or_special_txtr(t_cub *data);
+void			turn_peach_into_bowser(t_cub *data);
+
+// DOORS
+void			look_for_door_close(t_cub *data);
 
 // FAKE DOOR MODE
 void			enable_chrono_mode(t_cub *data);

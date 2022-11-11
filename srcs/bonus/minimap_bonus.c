@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:05:37 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/10 18:57:34 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:50:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	paint_wall_or_space(t_cub *data, int x_pixel, int y_pixel)
 
 	y = y_pixel / MINI_RATIO;
 	x = x_pixel / MINI_RATIO;
-	if ((data->cubmap[y][x] == '0') || (data->cubmap[y][x] == 'O') || is_persona(data->cubmap[y][x], OPEN))
+	if ((data->cubmap[y][x] == '0') || (data->cubmap[y][x] == 'O')
+		|| is_persona(data->cubmap[y][x], OPEN))
 		put_pixel_to_image_3d(data, x_pixel + 5, y_pixel + 10, DARK_PURPLE);
 	else if (data->cubmap[y][x] == 'D')
 		put_pixel_to_image_3d(data, x_pixel + 5, y_pixel + 10, BLACK);

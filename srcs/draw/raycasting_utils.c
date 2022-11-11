@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:53:43 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 02:38:11 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 17:09:00 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	is_wall(t_cub *data, t_point *point)
 	if (data->cubmap[y][x] == '1' || data->cubmap[y][x] == 'D'
 		|| data->cubmap[y][x] == 'Z'
 		|| data->cubmap[y][x] == 'P' || data->cubmap[y][x] == 'Q'
-		|| data->cubmap[y][x] == 'R' || data->cubmap[y][x] == 'S'
+		|| data->cubmap[y][x] == 'R' || data->cubmap[y][x] == 'Y'
 		|| data->cubmap[y][x] == 'T' || data->cubmap[y][x] == 'U'
 		|| data->cubmap[y][x] == 'V' || data->cubmap[y][x] == 'X')
 		return (1);

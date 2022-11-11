@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/11 00:51:52 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 16:46:33 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ int	main(int argc, char **argv)
 	t_cub	*c;
 
 	c = NULL;
-	
-	// srand(time(NULL));
 	if (argc == 2)
 	{
+		srand(time(NULL));
 		c = parsing_bonus(argv[1]);
 		c->ray = c->angle;
 		if (!ft_strncmp(argv[1], "map_tig.cub", ft_strlen("map_tig.cub")))
