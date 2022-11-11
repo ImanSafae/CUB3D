@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/24 21:27:06 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:25:06 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_file(int descrip_fd, t_data *data)
 	line = get_next_line(descrip_fd);
 	while (line && ++counter)
 	{
-		line = cub_free(line);
+		free(line);
 		line = get_next_line(descrip_fd);
 	}
 	data->file = malloc(sizeof(char *) * (counter + 1));
@@ -35,7 +35,7 @@ int	parse_file(int descrip_fd, t_data *data)
 	while (line)
 	{
 		data->file[counter] = ft_strdup(line);
-		line = cub_free(line);
+		free(line);
 		line = get_next_line(descrip_fd);
 		counter++;
 	}

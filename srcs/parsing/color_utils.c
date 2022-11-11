@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:59:29 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/10 01:51:28 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 23:38:03 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int	isnum_check(char *t)
 void	verify_color(t_data *d, t_cub *cub, int index, int type)
 {
 	char	**color;
+	char	*color_value;
 
 	color = NULL;
+	color_value = NULL;
 	d->i = 0;
 	if (d->texture_color && d->texture_color[index])
 	{
@@ -81,10 +83,13 @@ void	verify_color(t_data *d, t_cub *cub, int index, int type)
 		d->i = 0;
 		while (color && color[d->i])
 		{
-			cub->rgb[type][d->i] = isnum_check(ft_strtrim(color[d->i], "\n"));
+			color_value = ft_strtrim(color[d->i], "\n");
+			cub->rgb[type][d->i] = isnum_check(color_value);
+			free(color_value);
 			d->i++;
 		}
 	}
+	free_tab(color);
 }
 
 void	get_color(t_data *d, t_cub *cub)

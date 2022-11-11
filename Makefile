@@ -6,14 +6,14 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/11/10 18:44:19 by itaouil          ###   ########.fr        #
+#    Updated: 2022/11/10 23:14:33 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
-CFLAGS				=	-Werror -Wextra -Wall -O2
+CFLAGS				=	-Werror -Wextra -Wall -O2 -g
 INCLUDES			=	-lmlx -IMLX -LMLX -I./includes/
 LIB					=	libft/libft.a
 

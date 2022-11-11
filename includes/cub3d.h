@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/10 19:21:33 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:59:14 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define MINI_RATIO 10
 # define DIST_TO_OPEN_DOORS 20
 # define ANGLE_INCREMENT (PI / 3) / WIDTH_3D
+# define CHRONO_START 30
 
 // COLORS
 # define WHITE 0x00FFFFFF
@@ -128,6 +129,8 @@ typedef struct s_cub
 {
 	char	**cubmap;
 	char	**txtur;
+	void	*txtr_mlx_ptr;
+	void	*txtr_mlx_ptr_bonus;
 	t_img	textures[6];   // PARSED TEXTURE FILES
 	t_img	painting_textures[8];
 	t_img	right_texture;
@@ -265,8 +268,8 @@ int			ft_strcmp(const char *s1, const char *s2);
 
 //FREE
 void			free_data(t_data *d);
-char			**free_tab(char **tab);
-void		    end_cub(t_cub *data);
+void			free_tab(char **tab);
+void			end_cub(t_cub *data);
 
 // ************************* 2D ENGINE FUNCTIONS **************************
 
@@ -366,6 +369,7 @@ t_img			get_random_painting(t_cub *data, int index);
 
 // FAKE DOOR MODE
 void			enable_chrono_mode(t_cub *data);
+void			display_chrono(t_cub *data);
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:59:36 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 02:37:58 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:25:16 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	good_line_bonus(int end, int index, int start, char *line)
 		}
 		i++;
 	}
-	trimed = cub_free(trimed);
+	free(trimed);
 	return (1);
 }
 

@@ -6,11 +6,30 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 02:48:22 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 19:27:05 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:59:28 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	display_chrono(t_cub *data)
+{
+	char	*chrono;
+
+	chrono = ft_itoa(data->time_left);
+	if (data->time_left > 0)
+	{
+		mlx_string_put(data->map3d->mlx_ptr, data->map3d->win_ptr, WIDTH_3D - 130, 30, WHITE, "Find the portal.");
+		mlx_string_put(data->map3d->mlx_ptr, data->map3d->win_ptr, WIDTH_3D - 130, 50, WHITE, "Time left :");
+		mlx_string_put(data->map3d->mlx_ptr, data->map3d->win_ptr, WIDTH_3D - 50, 50, WHITE, chrono);
+		free(chrono);
+	}
+	else
+	{
+		mlx_string_put(data->map3d->mlx_ptr, data->map3d->win_ptr, WIDTH_3D - 170, 50, WHITE, "Portal is gone...");
+		mlx_string_put(data->map3d->mlx_ptr, data->map3d->win_ptr, WIDTH_3D - 240, 70, WHITE, "Good luck getting out of here.");
+	}
+}
 
 void	transform_door(t_cub *data)
 {
@@ -35,19 +54,14 @@ void	transform_door(t_cub *data)
 	}
 }
 
-void	*display_chrono(void *data)
+void	*manage_chrono(void *data)
 {
 	t_cub	*cub;
-	int		i;
-	char	*chrono;
 
 	cub = (t_cub *)data;
-	i = 30;
-	while (i >= 0)
+	while (cub->time_left > 0)
 	{
-		chrono = ft_itoa(i);
-		mlx_string_put(cub->map3d->mlx_ptr, cub->map3d->win_ptr, WIDTH_3D - 100, 50, BLACK, "HEY");
-		i--;
+		cub->time_left--;
 		usleep(1000000);
 	}
 	printf("\n\n\nYOU LOSE... Good luck getting out of here.\n");
@@ -59,7 +73,7 @@ void	enable_chrono_mode(t_cub *data)
 {
 	pthread_t	chrono;
 
-	pthread_create(&chrono, NULL, display_chrono, data);
+	pthread_create(&chrono, NULL, manage_chrono, data);
 	pthread_detach(chrono);
 }
 
@@ -75,6 +89,7 @@ void	parse_painting_txtur(t_cub *c)
 		i++;
 	}
 	mlx = mlx_init();
+	c->txtr_mlx_ptr_bonus = mlx;
 	i = 7;
 	while (c->txtur && c->txtur[++i] && i < 16)
 	{
@@ -86,7 +101,7 @@ void	parse_painting_txtur(t_cub *c)
 		if (c->painting_textures[i - 8].img == NULL)
 			error("xpm_to_image couldn't get texture image");
 	}
-	c->txtur = free_tab(c->txtur);
+	free_tab(c->txtur);
 }
 
 char	assign_painting(int rand)

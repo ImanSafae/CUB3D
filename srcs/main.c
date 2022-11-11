@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/09 19:11:38 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:20:29 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ int	main(int argc, char **argv)
 		mlx_key_hook(c->win, key_manager, c);
 		mlx_loop(c->mlx);
 */
-	c->ray = c->angle;
-	// draw2d(c);
-	draw_3d(c);
+		c->ray = c->angle;
+		draw_3d(c);
 	}
 	else
 		error("Wrong number of arguments");

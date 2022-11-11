@@ -37,24 +37,24 @@ int	get_texture(t_data *d, char *line, char *identifier, int index)
 	char	**splited;
 
 	trimed = NULL;
-	trimed = ft_strtrim(line, " \t"); // FREE TRIMED
-	splited = ft_split(trimed, ' '); // FREE SPLITED
-	trimed = cub_free(trimed);
+	trimed = ft_strtrim(line, " \t");
+	splited = ft_split(trimed, ' ');
+	free(trimed);
 	if (splited && splited[0] && ft_strcmp(splited[0], identifier) == 0)
 	{
 		if (splited[1] && ft_strlen(splited[0]) < 3)
 		{
-			d->texture_color[index] = ft_strdup(splited[1]); // FREE DATA TEXTURE COLOR
-			splited = free_tab(splited);
+			d->texture_color[index] = ft_strdup(splited[1]);
+			free_tab(splited);
 		}
 		else
 		{
-			splited = free_tab(splited);
+			free_tab(splited);
 			error("texture file non available: %s");
 		}
 		return (1);
 	}
-	splited = free_tab(splited);
+	free_tab(splited);
 	return (0);
 }
 
@@ -90,11 +90,11 @@ void	clean_texture(t_cub *c)
 		if (stop == 16 && c->i == 6)
 			c->i = 8;
 		temp = ft_strtrim(c->txtur[c->i], "\n");
-		c->txtur[c->i] = cub_free(c->txtur[c->i]);
+		free(c->txtur[c->i]);
 		c->txtur[c->i] = ft_strdup(temp);
 		check_xpm(temp);
 		ret = open(temp, O_RDONLY, 0);
-		temp = cub_free(temp);
+		free(temp);
 		if (ret < 0)
 		{		
 			error("a texture file is not opening");
@@ -115,8 +115,8 @@ void	parse_txtur(t_cub *c)
 	c->textures[WE].img = NULL;
 	c->textures[DOOR].img = NULL;
 	c->textures[END].img = NULL;
-	// c->textures[RANDOM].img = NULL;
 	mlx = mlx_init();
+	c->txtr_mlx_ptr = mlx;
 	i = -1; 
 	while (c->txtur && c->txtur[++i] && i < 6)
 	{
@@ -128,6 +128,8 @@ void	parse_txtur(t_cub *c)
 		if (c->textures[i].img == NULL)
 			error("xpm_to_image couldn't get texture image");
 	}
-	if (c->paintings_mode == false)
-		c->txtur = free_tab(c->txtur);
+	// if (c->paintings_mode == false)
+	// {
+	// 	free_tab(c->txtur);
+	// }
 }

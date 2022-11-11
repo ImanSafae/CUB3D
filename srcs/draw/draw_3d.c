@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:53:14 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/24 20:47:25 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:22:59 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	draw_3d(t_cub *data)
 
 	map3d = malloc(sizeof(t_mlx));
 	data->map3d = map3d;
-	parse_txtur(data);
 	init_3d_map(data);
 	get_map_param(data);
 	find_character_in_map(data);

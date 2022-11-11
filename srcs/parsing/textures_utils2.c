@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:18:00 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/24 21:29:06 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/11 00:09:21 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	check_xpm(char *str)
 		error("error with texture files (check_xpm)");
 	if (ft_strcmp(splited[1], "xpm"))
 		error("Error with texture file extension");
-	splited = free_tab(splited);
+	free_tab(splited);
 	return (0);
 }

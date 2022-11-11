@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:38:16 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/10 19:05:57 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/10 21:36:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	render_3d_bonus(t_cub *data)
 	bonus_moves(data);
 	mlx_put_image_to_window(data->map3d->mlx_ptr, data->map3d->win_ptr,
 		data->map3d->img_ptr, 0, 0);
+	if (data->fake_door_mode == true)
+		display_chrono(data);
 	return (1);
 }
 
