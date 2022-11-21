@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:59:36 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/21 16:06:29 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:00:21 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	get_map_bonus(t_data *d)
 	while (d->file[d->i] && d->i <= mapend)
 	{
 		d->map[d->j] = ft_strtrim_end(d->file[d->i], " \n");
-		if (d->j == 3)
-			printf("line %d: %s\n", d->j, d->map[d->j]);
 		d->j++;
 		d->i++;
 	}

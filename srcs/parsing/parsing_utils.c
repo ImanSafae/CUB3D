@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:06:02 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:59:58 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	get_map(t_data *d)
 {
 	int	mapend;
 
-	printf("get_map\n");
 	d->i = d->mid_line;
 	mapend = find_maplen(d);
 	d->map_size = mapend - d->mid_line + 1;
@@ -96,7 +95,6 @@ t_cub	*clean_map(t_data *d)
 {
 	t_cub	*newcub;
 
-	printf("clean_map\n");
 	newcub = NULL;
 	newcub = (t_cub *)malloc(sizeof(t_cub));
 	if (newcub == NULL)

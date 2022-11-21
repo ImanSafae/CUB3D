@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 09:59:27 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:18:20 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:00:44 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,13 @@ void	map_error(char **map, int i, int j, int mod)
 	{
 		if (is_open(map[i - 1][j], OPEN) || is_open(map[i][j + 1], OPEN)
 			|| is_open(map[i][j - 1], OPEN) || is_open(map[i + 1][j], OPEN))
-		{
-
-			printf("i=%d, j=%d, map[i][j]=(up(%c),right(%c),left(%c),down(%c)\n", i, j, map[i - 1][j],map[i][j + 1], map[i][j - 1], map[i + 1][j]);
 			error("opened map or persona outside()");
-		}
 	}
 	if (map && (map[i][j] == ' ' || map[i][j] == '\t') && mod == WALL)
 	{
 		if (is_open(map[i - 1][j], WALL) || is_open(map[i][j + 1], WALL)
 			|| is_open(map[i][j - 1], WALL) || is_open(map[i + 1][j], WALL))
-		{
-			printf("i=%d, j=%d, map[i][j]=(up(%c),right(%c),left(%c),down(%c))\n", i, j, map[i - 1][j],map[i][j + 1], map[i][j - 1], map[i + 1][j]);
 			error("No walls around space at last validation");
-		}
 	}
 }
 
