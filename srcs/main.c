@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:07:32 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 20:00:14 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/22 00:13:03 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	name_verifier(char *str)
 
 	splited = NULL;
 	i = 0;
-	if (str)
+	if (str && str[0] != 0)
 		splited = ft_split(str, '.');
 	if (splited == NULL)
 		error("failed to verify cub file");
