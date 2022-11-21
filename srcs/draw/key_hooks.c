@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:03:44 by itaouil           #+#    #+#             */
-/*   Updated: 2022/10/25 00:30:10 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:27:10 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	red_cross(int mousecode, t_cub *data)
+{
+	(void)mousecode;
+	(void)data;
+	exit(0);
+	return (0);
+}
 
 int	key_release(int keycode, t_cub *data)
 {
@@ -32,7 +40,7 @@ int	key_release(int keycode, t_cub *data)
 
 int	key_press(int keycode, t_cub *data)
 {
-	if (keycode == ESC)
+	if (keycode == ESC || keycode == RED_CROSS)
 		end_cub(data);
 	if (keycode == LEFT_ARROW)
 		data->left_arrow = true;

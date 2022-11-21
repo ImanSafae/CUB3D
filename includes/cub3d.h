@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 13:05:31 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:31:03 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
+# define SCROLL_DOWN 4
+# define SCROLL_UP 5
 # define SPACE_BAR 49
+# define RED_CROSS 17
 
 // STRUCTS
 typedef struct s_mlx
@@ -250,6 +253,7 @@ void			verify_color(t_data *data, t_cub *cub, int index, int type);
 
 //KEY_MANAGER FUNCTIONS
 int				key_manager(int key, t_cub *cub);
+int				red_cross(int mousecode, t_cub *data);
 
 //UTILS
 int				bad_charac(char *c);
@@ -374,5 +378,9 @@ void			look_for_door_close(t_cub *data);
 // FAKE DOOR MODE
 void			enable_chrono_mode(t_cub *data);
 void			display_chrono(t_cub *data);
+
+// HOOKS
+int				mouse_press_bonus(int mousecode, int x, int y, t_cub *data);
+int				mouse_release_bonus(int mousecode, int x, int y, t_cub *data);
 
 #endif

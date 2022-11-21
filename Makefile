@@ -6,14 +6,14 @@
 #    By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/11/21 17:17:27 by itaouil          ###   ########.fr        #
+#    Updated: 2022/11/21 18:40:28 by itaouil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
-CFLAGS				=	-Werror -Wextra -Wall -O2 -g -fsanitize=address
+CFLAGS				=	-Werror -Wextra -Wall -O2 -g
 INCLUDES			=	-lmlx -IMLX -LMLX -I./includes/
 LIB					=	libft/libft.a
 
@@ -42,6 +42,7 @@ SRCS_BONUS				=	doors_bonus.c \
 							mini_hooks_bonus.c \
 							minimap_bonus.c \
 							minimap2_bonus.c \
+							mouse_hooks_bonus.c \
 							parsing_bonus.c \
 							parsing2_bonus.c \
 							parsing_utils_bonus.c \
