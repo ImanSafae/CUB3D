@@ -6,14 +6,14 @@
 #    By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 15:37:04 by abelhadi          #+#    #+#              #
-#    Updated: 2022/11/21 14:00:02 by abelhadi         ###   ########.fr        #
+#    Updated: 2022/11/21 17:52:23 by abelhadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	cub3d
 
 FRAMEWORKS			=	-framework OpenGL -framework AppKit
-CFLAGS				=	-Werror -Wextra -Wall -O2 -g
+CFLAGS				=	-Werror -Wextra -Wall -O2 -g -fsanitize=address
 INCLUDES			=	-lmlx -IMLX -LMLX -I./includes/
 LIB					=	libft/libft.a
 
