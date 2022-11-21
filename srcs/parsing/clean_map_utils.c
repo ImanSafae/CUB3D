@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 09:59:27 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 17:00:44 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:59:47 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	map_error(char **map, int i, int j, int mod)
 	{
 		if (is_open(map[i - 1][j], OPEN) || is_open(map[i][j + 1], OPEN)
 			|| is_open(map[i][j - 1], OPEN) || is_open(map[i + 1][j], OPEN))
-			error("opened map or persona outside()");
+			error("opened map or character outside()");
 	}
 	if (map && (map[i][j] == ' ' || map[i][j] == '\t') && mod == WALL)
 	{

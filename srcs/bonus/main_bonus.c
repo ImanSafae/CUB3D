@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/21 19:00:09 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:00:08 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	name_verifier(char *str)
 	while (splited && splited[i])
 		i++;
 	if (ft_strcmp(splited[i - 1], "cub") != 0)
-		error("Wrong extension, please peak a .cub file");
+		error("Wrong extension, please pick a .cub file");
 }
 
 int	main(int argc, char **argv)
