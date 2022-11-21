@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 12:57:03 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:06:02 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	get_map(t_data *d)
 {
 	int	mapend;
 
+	printf("get_map\n");
 	d->i = d->mid_line;
 	mapend = find_maplen(d);
 	d->map_size = mapend - d->mid_line + 1;
@@ -82,7 +83,10 @@ void	get_map(t_data *d)
 	d->j = 0;
 	while (d->file[d->i] && d->i <= mapend)
 	{
-		d->map[d->j++] = ft_strtrim(d->file[d->i], "\n");
+		d->map[d->j] = ft_strtrim_end(d->file[d->i], " \n");
+		if (d->j == 3)
+			printf("line %d: %s\n", d->j, d->map[d->j]);
+		d->j++;
 		d->i++;
 	}
 	d->map[d->j] = NULL;
@@ -92,6 +96,7 @@ t_cub	*clean_map(t_data *d)
 {
 	t_cub	*newcub;
 
+	printf("clean_map\n");
 	newcub = NULL;
 	newcub = (t_cub *)malloc(sizeof(t_cub));
 	if (newcub == NULL)

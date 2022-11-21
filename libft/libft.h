@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 16:12:46 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/10/03 23:44:30 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:07:00 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim_end(char const *s1, char const *set);
 char	*ft_trim(char *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	**ft_split_c(char const *s, char c);

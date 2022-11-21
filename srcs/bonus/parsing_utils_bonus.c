@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:59:36 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/11 17:49:08 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:06:29 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	get_map_bonus(t_data *d)
 	d->j = 0;
 	while (d->file[d->i] && d->i <= mapend)
 	{
-		d->map[d->j++] = ft_strtrim(d->file[d->i], "\n");
+		d->map[d->j] = ft_strtrim_end(d->file[d->i], " \n");
+		if (d->j == 3)
+			printf("line %d: %s\n", d->j, d->map[d->j]);
+		d->j++;
 		d->i++;
 	}
 	d->map[d->j] = NULL;
@@ -52,8 +55,8 @@ int	good_line_bonus(int end, int index, int start, char *line)
 			if (trimed[i] != '1' && trimed[i] != 'O' && trimed[i] != 'P'
 				&& trimed[i] != 'Q' && trimed[i] != 'R' && trimed[i] != 'S'
 				&& trimed[i] != 'T' && trimed[i] != 'U' && trimed[i] != 'V'
-				&& trimed[i] != 'W' && trimed[i] != 'Z')
-				error("opened map");
+				&& trimed[i] != 'W' && trimed[i] != 'Z' && trimed[i] != ' ')
+				error("opened map bonus");
 		}
 		else
 			bad_charac_inside_bonus(trimed[i]);

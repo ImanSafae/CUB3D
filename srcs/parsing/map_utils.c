@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 13:47:53 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 15:43:13 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:19:10 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	good_line(int end, int index, int start, char *line)
 			|| i == (int)ft_strlen(trimed) - 1)
 		{
 			if (trimed[i] != '1')
-				error("opened map");
+				error("opened map in goodline()");
 		}
 		else
 		{
