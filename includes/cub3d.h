@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 15:39:45 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:05:31 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define DIST_TO_PLANE 255
 # define MINI_RATIO 10
 # define DIST_TO_OPEN_DOORS 20
-# define ANGLE_INCREMENT (PI / 3) / WIDTH_3D
+# define ANGLE_INCREMENT 0.00163624617 // = (PI / 3) / WIDTH_3D 
 # define CHRONO_START 30
 # define DIST_TO_TRANSFORM_PEACH 50
 
@@ -132,7 +132,7 @@ typedef struct s_cub
 	char	**txtur;
 	void	*txtr_mlx_ptr;
 	void	*txtr_mlx_ptr_bonus;
-	t_img	textures[6];   // PARSED TEXTURE FILES
+	t_img	textures[6];
 	t_img	painting_textures[8];
 	t_img	right_texture;
 	int		rgb[2][3];
@@ -163,7 +163,7 @@ typedef struct s_cub
 	int		time_left;
 }	t_cub;
 
-typedef	struct s_directions
+typedef struct s_directions
 {
 	int	up;
 	int	down;
@@ -206,57 +206,58 @@ enum	e_position
 	Y,
 };
 
-//***************************** P A R S I N G **************************************
+//******************** P A R S I N G **************************
 
 //PARSING FUNCTIONS
-t_cub		*parsing(char *description_file);
-t_cub		*extract_data(int descrip_fd, t_data *data);
-t_data		*init_data(t_data *data, char *filename);
+t_cub			*parsing(char *description_file);
+t_cub			*extract_data(int descrip_fd, t_data *data);
+t_data			*init_data(t_data *data, char *filename);
 
 //EXTRACT_DATA FUNCTIONS
-void		get_map(t_data *d);
-t_cub		*clean_map(t_data *d);
-void		get_texture_color(t_data *data);
-void		init_cub(t_data *d, t_cub *cub);
-int			parse_file(int descrip_fd, t_data *data);
-void		last_validation(t_data *data, t_cub *cub);
+void			get_map(t_data *d);
+t_cub			*clean_map(t_data *d);
+void			get_texture_color(t_data *data);
+void			init_cub(t_data *d, t_cub *cub);
+int				parse_file(int descrip_fd, t_data *data);
+void			last_validation(t_data *data, t_cub *cub);
 
 //GET_TEXTURES
-int			check_xpm(char *str);
-void		parse_txtur(t_cub *c);
-void		clean_texture(t_cub *cub);
-int			find_mapstart(char **file);
-void		copy_textures_tab(t_data *data, t_cub *cub);
-int			get_texture(t_data *data, char *line, char *identifier, int index);
+int				check_xpm(char *str);
+void			parse_txtur(t_cub *c);
+void			clean_texture(t_cub *cub);
+int				find_mapstart(char **file);
+void			copy_textures_tab(t_data *data, t_cub *cub);
+int				get_texture(t_data *data, char *line,
+					char *identifier, int index);
 
 //GET_MAP
-int			find_maplen(t_data *d);
-int			good_line(int end, int index, int start, char *line);
+int				find_maplen(t_data *d);
+int				good_line(int end, int index, int start, char *line);
 
 //CLEAN_MAP && LAST_VALIDATION
-int			is_open(char c, int mode);
-int			longest_str(char	**map);
-int			is_persona(char c, int mode);
-void		map_error(char **map, int i, int j, int MODE);
-size_t		cub_strlcpy(char *dst, const char *src, size_t dstsize);
-int			persona_position(t_cub *cub);
+int				is_open(char c, int mode);
+int				longest_str(char	**map);
+int				is_persona(char c, int mode);
+void			map_error(char **map, int i, int j, int MODE);
+size_t			cub_strlcpy(char *dst, const char *src, size_t dstsize);
+int				persona_position(t_cub *cub);
 
 //COLOR FUNCTIONS
-int			isnum_check(char *t);
-long		ft_atoi_custom(const char *str);
-void		get_color(t_data *d, t_cub *cub);
-void		verify_color(t_data *data, t_cub *cub, int index, int type);
+int				isnum_check(char *t);
+long			ft_atoi_custom(const char *str);
+void			get_color(t_data *d, t_cub *cub);
+void			verify_color(t_data *data, t_cub *cub, int index, int type);
 
 //KEY_MANAGER FUNCTIONS
-int			key_manager(int key, t_cub *cub);
+int				key_manager(int key, t_cub *cub);
 
 //UTILS
-int			bad_charac(char *c);
-char		*cub_free(char *str);
-int			is_map_or_error(char c);
-void		error(char	*error_msg);
-int			open_file(char	*filename);
-int			ft_strcmp(const char *s1, const char *s2);
+int				bad_charac(char *c);
+char			*cub_free(char *str);
+int				is_map_or_error(char c);
+void			error(char	*error_msg);
+int				open_file(char	*filename);
+int				ft_strcmp(const char *s1, const char *s2);
 
 //FREE
 void			free_data(t_data *d);
@@ -272,14 +273,14 @@ void			end_cub(t_cub *data);
 // ************************* R A Y - C A S T I N G **************************
 
 // MLX
-// void			init_window(t_cub **data, int length, int height); // mini map window : to be deleted later
 void			put_pixel_to_image(t_cub *data, double x, double y, int color);
 
 // 3D RENDER UTILS
 void			lay_background(t_cub *data);
 void			init_3d_map(t_cub *data);
-void			get_directions_3d(t_cub *data, t_directions *dir); // to be merged with get_directions later
-void			put_pixel_to_image_3d(t_cub *data, double x, double y, int color);
+void			get_directions_3d(t_cub *data, t_directions *dir);
+void			put_pixel_to_image_3d(t_cub *data, double x,
+					double y, int color);
 
 // RAY CASTING UTILS
 double			abs_val(double number);
@@ -295,18 +296,22 @@ double			get_distance(t_point *player, t_point *wall);
 double			get_right_angle(t_cub *data, t_directions *dir, int grid);
 
 // RAY CASTING (for both 3d render & mini-map)
-t_point			*check_ver_intersections(t_cub *data, t_point *player, t_directions *dir);
-t_point			*check_hor_intersections(t_cub *data, t_point *player, t_directions *dir);
-double			closest_wall(t_cub *data, t_point *hor_inter, t_point *ver_inter);
-t_point			*get_first_hor_intersection(t_cub *data, t_point *player, t_directions *dir);
-t_point			*get_first_ver_intersection(t_cub *data, t_point *player, t_directions *dir);
+t_point			*check_ver_intersections(t_cub *data,
+					t_point *player, t_directions *dir);
+t_point			*check_hor_intersections(t_cub *data,
+					t_point *player, t_directions *dir);
+double			closest_wall(t_cub *data, t_point *hor_inter,
+					t_point *ver_inter);
+t_point			*get_first_hor_intersection(t_cub *data,
+					t_point *player, t_directions *dir);
+t_point			*get_first_ver_intersection(t_cub *data,
+					t_point *player, t_directions *dir);
 double			find_wall(t_cub *data);
 
 // 3D RENDER
 void			draw_3d(t_cub *data);
 void			draw_walls(t_cub *data);
 int				render_3d(t_cub *data);
-
 
 // HOOKS & MOVEMENTS
 int				rotation_and_moves(t_cub *data);
@@ -334,7 +339,7 @@ void			paint_fov(t_cub *data);
 int				render_2d(t_cub *data);
 void			show_character(t_cub *data);
 void			draw_character(t_cub *data);
-t_directions	*get_directions(t_cub *data); // to be merged with get_directions_3d later
+t_directions	*get_directions(t_cub *data);
 void			dda(t_cub *data, t_point a, t_point b, int color);
 void			find_character_in_map_bonus(t_cub *data);
 int				bonus_moves(t_cub *data);
@@ -356,7 +361,8 @@ void			parse_painting_txtur(t_cub *c);
 void			init_paintings_mode(t_data *data, char *map_name);
 
 // TEXTURES
-unsigned int	texturing_bonus(t_cub *data, double projected_height, double y_wall);
+unsigned int	texturing_bonus(t_cub *data,
+					double projected_height, double y_wall);
 void			textures_rng(t_cub *data);
 t_img			get_random_painting(t_cub *data, int index);
 int				check_for_door_or_special_txtr(t_cub *data);
@@ -368,6 +374,5 @@ void			look_for_door_close(t_cub *data);
 // FAKE DOOR MODE
 void			enable_chrono_mode(t_cub *data);
 void			display_chrono(t_cub *data);
-
 
 #endif
