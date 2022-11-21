@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 16:12:46 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:07:00 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:47:29 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 	int				e_type;
 	char			*token;
 	char			*path;
-	char			**cmd_args;			// cmd_args[0] = "ls" | cmd_args[1] = " -la" | cmd_args[2] = "-e" par ex.
+	char			**cmd_args;
 	struct s_list	*redirections;
 	struct s_list	*nextelem;
 	struct s_list	*precedelem;
@@ -76,7 +76,8 @@ void	empty_list(t_list *list);
 void	delete_list(t_list **list);
 int		add_elem_before(t_list *elem, int value, char **cmd_args, t_list *red);
 int		add_elem_after(t_list *elem, int value, char **cmd_args, t_list *red);
-void	add_to_start(t_list *racine, int newvalue, char **cmd_args, t_list *red);
+void	add_to_start(t_list *racine, int newvalue,
+			char **cmd_args, t_list *red);
 void	add_to_end(t_list *racine, int newvalue, char **cmd_args, t_list *red);
 void	delete_elem(t_list *elem);
 void	delete_first_elem(t_list *racine);
@@ -86,7 +87,7 @@ void	rotate_list(t_list *racine);
 void	reverse_rotate_list(t_list *racine);
 void	swap_2_first(t_list *racine);
 // FREE FUNCTIONS
-t_list	   *free_node(t_list *elem);
+t_list	*free_node(t_list *elem);
 char	*free2(char *str); // in list_functions.c
 // TOKEN FUNCTIONS
 int		add_token_before(t_list *element, int newvalue, char *token, int type);

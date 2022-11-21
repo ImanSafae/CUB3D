@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 15:24:03 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:05:19 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:56:09 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char	*ft_trim(char *s1, char const *set)
 	size_t	end;
 	char	*dst;
 
-	printf("\n=================\nFUNCTION: ft_trim()\n=================\n");
 	start = 0;
 	end = ft_strlen(s1);
 	while (ft_strchr(set, s1[start]) && start < end)
@@ -71,8 +70,6 @@ char	*ft_trim(char *s1, char const *set)
 	dst = malloc(sizeof(char) * (end - start) + 1);
 	if (dst == NULL || !s1)
 		return (NULL);
-	printf("in ft_trim\n");
 	ft_strlcpy(dst, &s1[start], (end - start + 1));
-	printf("pointer = %p\n", s1);
 	return (dst);
 }

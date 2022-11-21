@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:59:59 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/04/20 13:54:28 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:54:15 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,54 +40,42 @@ void	tok_end(t_list *racine, int newvalue, char *token, int type)
 	add_token_before(racine, newvalue, token, type);
 }
 
-void	delete_elem(t_list *elem)
-{
-	elem->precedelem->nextelem = elem->nextelem;
-	elem->nextelem->precedelem = elem->precedelem;
-	elem = free_node(elem);
-}
+// void	delete_elem(t_list *elem)
+// {
+// 	elem->precedelem->nextelem = elem->nextelem;
+// 	elem->nextelem->precedelem = elem->precedelem;
+// 	elem = free_node(elem);
+// }
 
-void	delete_first_elem(t_list *racine)
-{
-	if (racine->nextelem != racine)
-	{
-		delete_elem(racine->nextelem);
-	}
-}
+// t_list	*free_node(t_list *elem)
+// {
+// 	int	i;
 
-t_list	*free_node(t_list *elem)
-{
-	int	i;
+// 	printf("\no=========\nFUNCTION: free_node()\n=========o\n");
+// 	i = 0;
+// 	while (elem->cmd_args)
+// 	{
+// 		printf("coucou in loop\n");
+// 		free(elem->cmd_args[i]);
+// 		elem->cmd_args[i] = NULL;
+// 		i++;
+// 	}
+// 	free(elem->cmd_args);
+// 	printf("coucou\n");
+// 	if (elem->path)
+// 		elem->path = free2(elem->path);
+// 	if (elem->token)
+// 		elem->token = free2(elem->token);
+// 	if (elem->redirections)
+// 		delete_list(&elem->redirections);
+// 			printf("coucou\n");
+// 	free(elem);
+// 		printf("coucou\n");
 
-	printf("\no=========\nFUNCTION: free_node()\n=========o\n");
-	i = 0;
-	while (elem->cmd_args)
-	{
-		printf("coucou in loop\n");
-		free(elem->cmd_args[i]);
-		elem->cmd_args[i] = NULL;
-		i++;
-	}
-	free(elem->cmd_args);
-	printf("coucou\n");
-
-	if (elem->path)
-		elem->path = free2(elem->path);
-	if (elem->token)
-		elem->token = free2(elem->token);
-	if (elem->redirections)
-		delete_list(&elem->redirections);
-			printf("coucou\n");
-
-	free(elem);
-		printf("coucou\n");
-
-	elem = NULL;
-	printf("\no=========\nFUNCTION: end of free_node()\n=========o\n");
-	return (elem);
-}
-
-
+// 	elem = NULL;
+// 	printf("\no=========\nFUNCTION: end of free_node()\n=========o\n");
+// 	return (elem);
+// }
 
 /*
 int	main(int ac, char	**argv)

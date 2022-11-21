@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_functions3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:16 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/04/20 14:32:54 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:52:23 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,42 +91,5 @@ int	add_token_before(t_list *element, int newvalue, char *token, int type)
 	new_element->nextelem = element;
 	element->precedelem->nextelem = new_element;
 	element->precedelem = new_element;
-	return (1);
-}
-
-int	add_token_after(t_list *element, int newvalue, char *token, int type)
-{
-	t_list	*new_element;
-
-	new_element = malloc(sizeof(t_list));
-	if (new_element == NULL)
-		return (0);
-	new_element->value = newvalue;
-	new_element->t_type = type;
-	new_element->path = NULL;
-	new_element->token = token;
-	new_element->redirections = NULL;
-	new_element->cmd_args = NULL;
-	new_element->precedelem = element;
-	new_element->nextelem = element->nextelem;
-	element->nextelem->precedelem = new_element;
-	element->nextelem = new_element;
-	return (1);
-}
-
-int	add_elem_after(t_list *elem, int value, char **cmd_args, t_list *red)
-{	
-	t_list	*new_element;
-
-	new_element = malloc(sizeof(t_list));
-	if (new_element == NULL)
-		return (0);
-	new_element->value = value;
-	new_element->redirections = red;
-	new_element->cmd_args = cmd_args;
-	new_element->precedelem = elem;
-	new_element->nextelem = elem->nextelem;
-	elem->nextelem->precedelem = new_element;
-	elem->nextelem = new_element;
 	return (1);
 }

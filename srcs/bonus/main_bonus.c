@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 23:36:13 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/11 16:46:33 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:00:09 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@ void	print_instructions(void)
 	printf("    \\_/____________________________/.\n\n\n");
 }
 
+void	name_verifier(char *str)
+{
+	char	**splited;
+	int		i;
+
+	splited = NULL;
+	i = 0;
+	if (str)
+		splited = ft_split(str, '.');
+	if (splited == NULL)
+		error("failed to verify cub file");
+	while (splited && splited[i])
+		i++;
+	if (ft_strcmp(splited[i - 1], "cub") != 0)
+		error("Wrong extension, please peak a .cub file");
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*c;
@@ -41,6 +58,7 @@ int	main(int argc, char **argv)
 	c = NULL;
 	if (argc == 2)
 	{
+		name_verifier(argv[1]);
 		srand(time(NULL));
 		c = parsing_bonus(argv[1]);
 		c->ray = c->angle;
