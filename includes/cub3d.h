@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:29:55 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 13:05:31 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:34:33 by abelhadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ enum	e_position
 //******************** P A R S I N G **************************
 
 //PARSING FUNCTIONS
+void			name_verifier(char *str);
 t_cub			*parsing(char *description_file);
 t_cub			*extract_data(int descrip_fd, t_data *data);
 t_data			*init_data(t_data *data, char *filename);
