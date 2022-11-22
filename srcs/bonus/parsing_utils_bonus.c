@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:59:36 by itaouil           #+#    #+#             */
-/*   Updated: 2022/11/21 17:00:21 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:38:38 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	bad_charac_bonus(char *c)
 			&& c[i] != 'S' && c[i] != 'W' && c[i] != '\n'
 			&& c[i] != '\t' && c[i] != ' ' && c[i] != 'V'
 			&& c[i] != 'D' && c[i] != 'Z')
-		{
-			printf("bad carac=(%c)\n", c[i]);
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -89,10 +86,7 @@ int	bad_charac_inside_bonus(char c)
 	if (c != '0' && c != '1' && c != 'N' && c != 'E'
 		&& c != 'S' && c != 'W' && c != 'D' && c != 'V'
 		&& c != '\t' && c != ' ' && c != 'R' && c != 'Z')
-	{
-		printf("bad charac inside = (%c)", c);
 		error("bad character inside map");
-	}
 	return (0);
 }
 
@@ -105,9 +99,6 @@ int	is_map_or_error_bonus(char c)
 	if (c != 'N' && c != 'E' && c != 'S' && c != 'W' && c != 'F' && c != 'C'
 		&& c != 'D' && c != 'R' && c != 'Z' && c != 'P' && c != 'Q' && c != 'R'
 		&& c != 'Y' && c != 'T' && c != 'U' && c != 'V' && c != 'X')
-	{
-		printf("c = %c\n", c);
 		error("line starting with wrong character or open map");
-	}
 	return (0);
 }

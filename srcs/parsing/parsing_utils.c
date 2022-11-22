@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:16:07 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:59:58 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:30:50 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	get_map(t_data *d)
 	while (d->file[d->i] && d->i <= mapend)
 	{
 		d->map[d->j] = ft_strtrim_end(d->file[d->i], " \n");
-		if (d->j == 3)
-			printf("line %d: %s\n", d->j, d->map[d->j]);
 		d->j++;
 		d->i++;
 	}

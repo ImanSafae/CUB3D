@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:53:14 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/11 00:22:59 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:31:28 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void	draw_3d(t_cub *data)
 	mlx_loop_hook(map3d->mlx_ptr, &render_3d, data);
 	mlx_hook(map3d->win_ptr, 2, 0, key_press, data);
 	mlx_hook(map3d->win_ptr, 3, 0, key_release, data);
+	mlx_hook(map3d->win_ptr, 17, 1L << 0, red_cross, data);
 	mlx_loop(map3d->mlx_ptr);
 }

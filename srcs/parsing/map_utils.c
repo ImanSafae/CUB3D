@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelhadi <abelhadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 13:47:53 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/21 16:19:10 by abelhadi         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:38:05 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ int	bad_charac(char *c)
 		if (c[i] != '0' && c[i] != '1' && c[i] != 'N' && c[i] != 'E'
 			&& c[i] != 'S' && c[i] != 'W' && c[i] != '\n'
 			&& c[i] != '\t' && c[i] != ' ' && c[i] != 'C')
-		{
-			printf("bad carac=(%c)\n", c[i]);
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -62,10 +59,7 @@ int	bad_charac_inside(char c)
 	if (c != '0' && c != '1' && c != 'N' && c != 'E'
 		&& c != 'S' && c != 'W'
 		&& c != '\t' && c != ' ')
-	{
-		printf("bad charac inside = (%c)", c);
 		error("bad character inside map");
-	}
 	return (0);
 }
 
