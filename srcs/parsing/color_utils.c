@@ -6,7 +6,7 @@
 /*   By: itaouil <itaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:59:29 by abelhadi          #+#    #+#             */
-/*   Updated: 2022/11/22 17:38:46 by itaouil          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:43:20 by itaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ int	isnum_check(char *t)
 	while (t && t[i])
 	{
 		if ((t[i] < 48 || t[i] > 57) && t[i] != 43 && t[i] != 45)
+		{
 			error("message from isnum_check :");
 			error("a character isn't in digit format");
+		}
 		i++;
 	}
 	num = ft_atoi_custom(t);
