@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"mlx.h": "c",
-		"iosfwd": "c",
-		"string": "c"
-	}
-}
