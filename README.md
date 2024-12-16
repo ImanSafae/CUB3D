@@ -5,6 +5,8 @@ Just like the latter, CUB3D uses the MinilibX.
 The goal is to create a game in "3D" using the method of raycasting, inspired by the game Wolfenstein 3D.
 The method I chose uses trigonometry; it is more detailed in this tutorial: https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
 
+**Warning: this project was coded on and for MacOS. If you're on a different OS, you might need to make some adjustments.**
+
 
 ![image](https://github.com/user-attachments/assets/173ec318-4f81-472e-8a2f-d54a751aea97)
 
